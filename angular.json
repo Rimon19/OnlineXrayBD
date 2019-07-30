@@ -27,7 +27,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.sass"
+              "src/assets/css/style.css",
+              "src/assets/css/bootstrap.min.css",
+              "src/assets/css/icons.css",
+              "src/assets/css/metismenu.min.css"
             ],
             "scripts": [],
             "es5BrowserSupport": true
