@@ -1178,7 +1178,7 @@ body {
 }
 
 #topnav .navbar-custom {
-  background-color: #ffffff;
+  background-color: #045d6a;
   border-bottom: 2px solid rgba(53, 69, 88, 0.1);
 }
 
@@ -1195,14 +1195,15 @@ body {
 
 #topnav .navigation-menu > li > a {
   display: block;
-  color: rgba(53, 69, 88, 0.8);
+  color: rgba(235, 237, 239, 0.8);
   -webkit-transition: all .5s ease;
   transition: all .5s ease;
   line-height: 18px;
   border-radius: 5px;
   padding-left: 20px;
   padding-right: 20px;
-  font-size: 14px;
+  font-size: 15px;
+  font-weight: 700;
 }
 
 #topnav .navigation-menu > li > a:hover, #topnav .navigation-menu > li > a:focus, #topnav .navigation-menu > li > a:active {
@@ -1235,7 +1236,11 @@ body {
 }
 
 .wrapper {
-  padding-top: 130px;
+  padding-top: 50px;
+}
+
+a:hover{
+  text-decoration: none;
 }
 
 .page-title-box {
@@ -1260,10 +1265,12 @@ Responsive Menu
     margin-right: 10px;
   }
   #topnav .navigation-menu > li:hover a {
-    color: #30419b;
+    color: #ffffff;
+    text-decoration: none;
   }
   #topnav .navigation-menu > li:hover a i {
-    color: #30419b;
+    color: #ffffff;
+    text-decoration: none;
   }
   #topnav .navigation-menu > li .submenu {
     position: absolute;
@@ -1324,6 +1331,7 @@ Responsive Menu
   }
   #topnav .navigation-menu > li .submenu li a:hover {
     color: #30419b;
+    text-decoration: none;
   }
   #topnav .navigation-menu > li > a {
     padding-top: 20px;
@@ -1369,6 +1377,7 @@ Responsive Menu
   }
   #topnav .navigation-menu > li .submenu li a:hover {
     color: #30419b;
+    text-decoration: none;
   }
   #topnav .navigation-menu > li .submenu li.has-submenu > a:after {
     content: "\f140";
