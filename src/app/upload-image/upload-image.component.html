@@ -1,0 +1,94 @@
+<div class="accountbg"></div>
+<div class="home-btn d-none d-sm-block">
+  <a href="index.html" class="text-white"><i class="fas fa-home h2"></i></a>
+</div>
+<div class="wrapper-page">
+  <div class="card card-pages shadow-none">
+
+    <div class="card-body">
+      <div class="text-center m-t-0 m-b-15">
+
+      </div>
+      <h5 class="font-18 text-center">Upload - <b>a Report</b></h5>
+
+      <form #f="ngForm" class="form-horizontal m-t-30 dropzone" action="#">
+
+        <div class="form-group">
+          <div class="col-12">
+            <label>Patient Name</label>
+            <input #inistituteName="ngModel" [(ngModel)]="appUser.inistituteName" name="inistituteName"
+              class="form-control" type="text" placeholder="Patient">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-12">
+            <label>Age</label>
+            <input #address="ngModel" [(ngModel)]="appUser.address" name="address" class="form-control" type="text"
+              placeholder="Age">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-12">
+            <label>Sex</label>
+            <select class="form-control">
+              <option>Select</option>
+              <option>Male</option>
+              <option>Female</option>
+            </select>
+          </div>
+        </div>
+
+
+
+        <div class="form-group">
+          <div class="col-12">
+            <label>Ref By</label>
+            <input #mobile="ngModel" [(ngModel)]="appUser.mobile" name="mobile" class="form-control" type="text"
+              placeholder="Reference">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-12">
+            <label>X Ray Name</label>
+            <input #mobile="ngModel" [(ngModel)]="appUser.mobile" name="mobile" class="form-control" type="text"
+              placeholder="X-ray">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-12">
+            <label>Problem</label>
+            <textarea id="textarea" class="form-control" maxlength="225" rows="3"
+              placeholder="Write the problem here"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-12 fallback">
+            <label>Add Image</label>
+            <input #mobile="ngModel" [(ngModel)]="appUser.mobile" name="mobile" class="form-control" type="file"
+              multiple="multiple" placeholder="image">
+          </div>
+        </div>
+
+
+
+
+
+
+        <div class="form-group text-center m-t-20">
+          <div class="col-12">
+            <button [disabled]="!f.valid" (click)="signUp(f.valid&&appUser)"
+              class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit">UPLOAD</button>
+          </div>
+        </div>
+
+
+      </form>
+    </div>
+
+  </div>
+</div>

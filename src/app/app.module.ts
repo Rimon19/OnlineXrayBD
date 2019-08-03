@@ -16,6 +16,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { UploadImageComponent } from './upload-image/upload-image.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     LoginComponent,
     SignUpComponent,
     CreateUserComponent,
-    CreateDoctorComponent
+    CreateDoctorComponent,
+    UploadImageComponent
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { CreateDoctorComponent } from './create-doctor/create-doctor.component';
+import { UploadImageComponent } from './upload-image/upload-image.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'create-doctor',
     component: CreateDoctorComponent
+  },
+  {
+    path: 'upload-image',
+    component: UploadImageComponent
   }
 ];
 
