@@ -65,6 +65,23 @@ export class UserService {
      });
     }
  
+    UserSignUp(registrationForm){
+
+      return this.af.auth
+      .createUserWithEmailAndPassword(registrationForm.email,
+       registrationForm.password).then( newUser => {      
+         this.userData.child(newUser.user.uid).update({
+           fullName: registrationForm.name,
+           email: registrationForm.email,
+           password: registrationForm.password,       
+           
+           address:registrationForm.address,
+           mobile:registrationForm.mobile,
+           isUser:registrationForm.isUser,
+           inistituteName:registrationForm.inistituteName
+         });
+       });
+      }
   get(uid: string) { 
     return this.db.object('/users/' + uid);
   }

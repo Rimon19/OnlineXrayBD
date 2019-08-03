@@ -10,6 +10,7 @@ export class AppUser {
   
     termsNcondition:boolean;
     isAdmin:boolean;
+    isUser:boolean;
     isDoctor:boolean;
    
   }
