@@ -42,11 +42,29 @@ export class UserService {
         fullName: registrationForm.name,
         email: registrationForm.email,
         password: registrationForm.password,
-        termsNcondition:registrationForm.termsNcondition                     
+        termsNcondition:registrationForm.termsNcondition       
       });
     });
    }
 
+   DoctorsignUp(registrationForm){
+
+    return this.af.auth
+    .createUserWithEmailAndPassword(registrationForm.email,
+     registrationForm.password).then( newUser => {      
+       this.userData.child(newUser.user.uid).update({
+         fullName: registrationForm.name,
+         email: registrationForm.email,
+         password: registrationForm.password,       
+         
+         address:registrationForm.address,
+         degree:registrationForm.degree,
+         mobile:registrationForm.mobile,
+         isDoctor:registrationForm.isDoctor
+       });
+     });
+    }
+ 
   get(uid: string) { 
     return this.db.object('/users/' + uid);
   }

@@ -15,6 +15,7 @@ export class SignUpComponent implements OnInit {
   ngOnInit() {
   }
   signUp(appUser:AppUser){
+    if(appUser.termsNcondition!=true){appUser.termsNcondition=false};
      console.log(appUser);
     this.userService.signUp(appUser);
   }

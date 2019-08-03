@@ -11,26 +11,29 @@
       </div>
       <h5 class="font-18 text-center">Create a Doctor - <b>ONLINE X-RAY BD</b></h5>
 
-      <form class="form-horizontal m-t-30" action="#">
+      <form #f="ngForm" class="form-horizontal m-t-30" action="#">
 
         <div class="form-group">
           <div class="col-12">
             <label>Doctor Name</label>
-            <input class="form-control" type="text" required="" placeholder="Doctor">
+            <input #name="ngModel" [(ngModel)]="appUser.name" name="name"  class="form-control" type="text" required="" placeholder="Doctor" required>
+            <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+              Name is required.
+            </div>
           </div>
         </div>
 
         <div class="form-group">
           <div class="col-12">
             <label>Address</label>
-            <input class="form-control" type="text" required="" placeholder="Address">
+            <input #address="ngModel" [(ngModel)]="appUser.address" name="address"  class="form-control" type="text"  placeholder="Address">
           </div>
         </div>
 
         <div class="form-group">
           <div class="col-12">
             <label>Degree</label>
-            <input class="form-control" type="text" required="" placeholder="Degree">
+            <input #degree="ngModel" [(ngModel)]="appUser.degree" name="degree"  class="form-control" type="text"  placeholder="Degree">
           </div>
         </div>
 
@@ -39,21 +42,33 @@
         <div class="form-group">
           <div class="col-12">
             <label>Mobile Number</label>
-            <input class="form-control" type="text" required="" placeholder="Mobile">
+            <input #mobile="ngModel" [(ngModel)]="appUser.mobile" name="mobile" class="form-control" type="text"  placeholder="Mobile" >
           </div>
         </div>
 
         <div class="form-group">
           <div class="col-12">
             <label>UserName</label>
-            <input class="form-control" type="text" required="" placeholder="Username as Email">
+            <input #email="ngModel" [(ngModel)]="appUser.email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" class="form-control" type="text" required="" placeholder="Username as Email" required>
+            <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
+              Email is required.
+              <div [hidden]="!email.errors?.pattern">
+                  Invalid Email
+                </div> 
+            </div>
           </div>
         </div>
 
         <div class="form-group">
           <div class="col-12">
             <label>Password</label>
-            <input class="form-control" type="password" required="" placeholder="Password">
+            <input #password="ngModel" [(ngModel)]="appUser.password" name="password" minlength="6"  class="form-control" type="password" required="" placeholder="Password">
+            <div class="alert alert-danger" *ngIf="password.touched && password.invalid">
+              Password is required.
+              <div  class="alert alert-danger" *ngIf="password.errors.minlength">
+                  Password must be at least 6 characters long.
+                </div>
+            </div>
           </div>
         </div>
 
@@ -61,7 +76,7 @@
 
         <div class="form-group text-center m-t-20">
           <div class="col-12">
-            <button class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit">Register a
+            <button [disabled]="!f.valid" (click)="signUp(f.valid&&appUser)" class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit">Register a
               Doctor</button>
           </div>
         </div>
