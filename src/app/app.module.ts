@@ -1,3 +1,4 @@
+import { UserService } from './user.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -10,6 +11,11 @@ import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { CreateDoctorComponent } from './create-doctor/create-doctor.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -24,9 +30,17 @@ import { CreateDoctorComponent } from './create-doctor/create-doctor.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+  
+
   ],
-  providers: [],
+  providers: [
+    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -11,41 +11,60 @@
                 </div>
                 <h5 class="font-18 text-center">Register - <b>ONLINE X-RAY BD</b></h5>
 
-                <form class="form-horizontal m-t-30" action="#">
+                <form #f="ngForm" class="form-horizontal m-t-30" action="#">
 
                         <div class="form-group">
                                 <div class="col-12">
                                         <label>Email</label>
-                                    <input class="form-control" type="text" required="" placeholder="Email">
+                                    <input #email="ngModel" [(ngModel)]="appUser.email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" class="form-control" type="text"  placeholder="Email" required>
+                                    <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
+                                        Email is required.
+                                        <div [hidden]="!email.errors?.pattern">
+                                            Invalid pattern
+                                          </div> 
+                                      </div>
+                                      
                                 </div>
+                                
                             </div>
 
                     <div class="form-group">
                         <div class="col-12">
                                 <label>Username</label>
-                            <input class="form-control" type="text" required="" placeholder="Username">
+                            <input #name="ngModel" [(ngModel)]="appUser.name" name="name" class="form-control" type="text" required="" placeholder="Username" required>
+                            <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+                                Name is required.
+                              </div>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-12">
                                 <label>Password</label>
-                            <input class="form-control" type="password" required="" placeholder="Password">
+                            <input #password="ngModel" [(ngModel)]="appUser.password" name="password"  minlength="6"  class="form-control" type="password" required="" placeholder="Password" required>
+                            <div class="alert alert-danger" *ngIf="password.touched && password.invalid">
+                                Password is required.
+                                <div  class="alert alert-danger" *ngIf="password.errors.minlength">
+                                    Password must be at least 6 characters long.
+                                  </div>
+                              </div>
+                              
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-12">
                                 <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                        <input #termsNcondition="ngModel" [(ngModel)]="appUser.termsNcondition" name="termsNcondition" type="checkbox" class="custom-control-input" id="customCheck1">
                                         <label class="custom-control-label font-weight-normal" for="customCheck1">I accept <a href="#" class="text-primary">Terms and Conditions</a></label>
+                                        
                                     </div>
                         </div>
                     </div>
 
                     <div class="form-group text-center m-t-20">
                         <div class="col-12">
-                            <button class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit">Register</button>
+                            <button [disabled]="!f.valid" (click)="signUp(f.valid&&appUser)" class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit">Register</button>
                         </div>
                     </div>
 

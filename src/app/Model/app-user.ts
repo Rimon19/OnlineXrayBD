@@ -1,10 +1,15 @@
 export class AppUser { 
-    key:string;
+    
     name: string;
     email: string;   
-   
+    password:any;
+    mobile:string;
+    address:string;
+    degree:string;
+    inistituteName:string;
+  
+    termsNcondition:boolean;
     isAdmin:boolean;
     isDoctor:boolean;
-    password:any;
-  
+   
   }

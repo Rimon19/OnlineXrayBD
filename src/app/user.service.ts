@@ -39,10 +39,10 @@ export class UserService {
    .createUserWithEmailAndPassword(registrationForm.email,
     registrationForm.password).then( newUser => {      
       this.userData.child(newUser.user.uid).update({
-        name: registrationForm.UserName,
+        fullName: registrationForm.name,
         email: registrationForm.email,
         password: registrationForm.password,
-        nermsAndCondition:registrationForm.TermsAndCondition                     
+        termsNcondition:registrationForm.termsNcondition                     
       });
     });
    }
