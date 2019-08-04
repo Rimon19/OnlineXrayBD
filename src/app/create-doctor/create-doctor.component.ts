@@ -18,8 +18,6 @@ appUser=new AppUser();
     if(appUser.address==undefined) appUser.address=null;
     if(appUser.degree==undefined) appUser.degree=null;
     if(appUser.mobile==undefined) appUser.mobile=null;
-    
-    console.log(appUser);
    this.userService.DoctorsignUp(appUser);
  }
 }

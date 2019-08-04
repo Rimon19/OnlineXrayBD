@@ -16,7 +16,7 @@ export class SignUpComponent implements OnInit {
   }
   signUp(appUser:AppUser){
     if(appUser.termsNcondition!=true){appUser.termsNcondition=false};
-     console.log(appUser);
+    appUser.isAdmin=true;
     this.userService.signUp(appUser);
   }
 
