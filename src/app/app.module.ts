@@ -17,6 +17,7 @@ import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { UploadImageComponent } from './upload-image/upload-image.component';
+import { WaitingReportComponent } from './waiting-report/waiting-report.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { UploadImageComponent } from './upload-image/upload-image.component';
     SignUpComponent,
     CreateUserComponent,
     CreateDoctorComponent,
-    UploadImageComponent
+    UploadImageComponent,
+    WaitingReportComponent
   ],
   imports: [
     BrowserModule,

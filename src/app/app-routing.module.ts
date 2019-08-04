@@ -8,6 +8,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { CreateDoctorComponent } from './create-doctor/create-doctor.component';
 import { UploadImageComponent } from './upload-image/upload-image.component';
+import { WaitingReportComponent } from './waiting-report/waiting-report.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'upload-image',
     component: UploadImageComponent
+  },
+  {
+    path: 'waiting-report',
+    component: WaitingReportComponent
   }
 ];
 
