@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
        console.log("app user",this.appUser);
        if(this.appUser.isAdmin){ this.router.navigate(['/admin-dashboard']);}
        if(this.appUser.isUser){ this.router.navigate(['/user-dashboard']);}
+       if(this.appUser.isDoctor){this.router.navigate(['/doctor-dashboard'])}
      
      });
      
