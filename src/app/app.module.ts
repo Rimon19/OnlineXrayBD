@@ -18,6 +18,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { UploadImageComponent } from './upload-image/upload-image.component';
 import { WaitingReportComponent } from './waiting-report/waiting-report.component';
+import { DoctorReportViewComponent } from './doctor-report-view/doctor-report-view.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { WaitingReportComponent } from './waiting-report/waiting-report.componen
     CreateUserComponent,
     CreateDoctorComponent,
     UploadImageComponent,
-    WaitingReportComponent
+    WaitingReportComponent,
+    DoctorReportViewComponent
   ],
   imports: [
     BrowserModule,
