@@ -16,27 +16,36 @@
         <div class="form-group">
           <div class="col-12">
             <label>Patient Name</label>
-            <input #inistituteName="ngModel" [(ngModel)]="appUser.inistituteName" name="inistituteName"
-              class="form-control" type="text" placeholder="Patient">
+            <input #name="ngModel" [(ngModel)]="uploadImage.name" name="pName"
+              class="form-control" type="text" placeholder="Patient" required>
+              <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+                  Patient Name is required.            
+                </div>
           </div>
+        
         </div>
 
         <div class="form-group">
           <div class="col-12">
             <label>Age</label>
-            <input #address="ngModel" [(ngModel)]="appUser.address" name="address" class="form-control" type="text"
+            <input #age="ngModel" [(ngModel)]="uploadImage.age" name="age" class="form-control" required type="text"
               placeholder="Age">
+              <div class="alert alert-danger" *ngIf="age.touched && age.invalid">
+                  Age is required.            
+                </div>
           </div>
         </div>
 
         <div class="form-group">
           <div class="col-12">
             <label>Sex</label>
-            <select class="form-control">
-              <option>Select</option>
-              <option>Male</option>
-              <option>Female</option>
+
+            <select #sexId="ngModel" [(ngModel)]="uploadImage.sexId" name="sex" id="sex" class="form-control">              
+            
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>  
             </select>
+           
           </div>
         </div>
 
@@ -45,7 +54,7 @@
         <div class="form-group">
           <div class="col-12">
             <label>Ref By</label>
-            <input #mobile="ngModel" [(ngModel)]="appUser.mobile" name="mobile" class="form-control" type="text"
+            <input #refBy="ngModel" [(ngModel)]="uploadImage.refBy" name="refBy" class="form-control" type="text"
               placeholder="Reference">
           </div>
         </div>
@@ -53,7 +62,7 @@
         <div class="form-group">
           <div class="col-12">
             <label>X Ray Name</label>
-            <input #mobile="ngModel" [(ngModel)]="appUser.mobile" name="mobile" class="form-control" type="text"
+            <input #xrayName="ngModel" [(ngModel)]="uploadImage.xrayName" name="xrayName" class="form-control" type="text"
               placeholder="X-ray">
           </div>
         </div>
@@ -61,7 +70,7 @@
         <div class="form-group">
           <div class="col-12">
             <label>Problem</label>
-            <textarea id="textarea" class="form-control" maxlength="225" rows="3"
+            <textarea #problem="ngModel" [(ngModel)]="uploadImage.problem" name="problem" id="textarea" class="form-control" maxlength="225" rows="3"
               placeholder="Write the problem here"></textarea>
           </div>
         </div>
@@ -69,7 +78,7 @@
         <div class="form-group">
           <div class="col-12 fallback">
             <label>Add Image</label>
-            <input #mobile="ngModel" [(ngModel)]="appUser.mobile" name="mobile" class="form-control" type="file"
+            <input type="file" (change)="detectFilesForImageUrlFile($event)" name="image" class="form-control" type="file"
               multiple="multiple" placeholder="image">
           </div>
         </div>
@@ -81,7 +90,7 @@
 
         <div class="form-group text-center m-t-20">
           <div class="col-12">
-            <button [disabled]="!f.valid" (click)="signUp(f.valid&&appUser)"
+            <button [disabled]="!f.valid" (click)="saveImageUpload(f.valid&&uploadImage)"
               class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit">UPLOAD</button>
           </div>
         </div>
