@@ -19,6 +19,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { UploadImageComponent } from './upload-image/upload-image.component';
 import { WaitingReportComponent } from './waiting-report/waiting-report.component';
 import { DoctorReportViewComponent } from './doctor-report-view/doctor-report-view.component';
+import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { DoctorReportViewComponent } from './doctor-report-view/doctor-report-vi
 
   ],
   providers: [
-    
+    AngularFireStorage
   ],
   bootstrap: [AppComponent]
 })

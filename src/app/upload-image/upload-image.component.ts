@@ -14,7 +14,7 @@ export class UploadImageComponent implements OnInit {
  
   saveImageUpload(uploadImage){
     console.log(uploadImage);
-       this.uploadImageService.pushUpload(uploadImage);
+       this.uploadImageService.startUpLoad(uploadImage);
      }
 
 
