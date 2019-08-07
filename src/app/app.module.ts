@@ -20,6 +20,8 @@ import { UploadImageComponent } from './upload-image/upload-image.component';
 import { WaitingReportComponent } from './waiting-report/waiting-report.component';
 import { DoctorReportViewComponent } from './doctor-report-view/doctor-report-view.component';
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
+import { CompletedReportsComponent } from './completed-reports/completed-reports.component';
+import { PrintReportComponent } from './print-report/print-report.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage
     CreateDoctorComponent,
     UploadImageComponent,
     WaitingReportComponent,
-    DoctorReportViewComponent
+    DoctorReportViewComponent,
+    CompletedReportsComponent,
+    PrintReportComponent
   ],
   imports: [
     BrowserModule,
