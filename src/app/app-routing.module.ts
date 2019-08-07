@@ -10,6 +10,7 @@ import { CreateDoctorComponent } from './create-doctor/create-doctor.component';
 import { UploadImageComponent } from './upload-image/upload-image.component';
 import { WaitingReportComponent } from './waiting-report/waiting-report.component';
 import { DoctorReportViewComponent } from './doctor-report-view/doctor-report-view.component';
+import { CompletedReportsComponent } from './completed-reports/completed-reports.component';
 
 const routes: Routes = [
   {
@@ -51,6 +52,10 @@ const routes: Routes = [
   {
     path: 'doctor_report_view',
     component: DoctorReportViewComponent
+  },
+  {
+    path: 'complete-reports',
+    component: CompletedReportsComponent
   }
 ];
 
