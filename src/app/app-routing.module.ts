@@ -11,6 +11,8 @@ import { UploadImageComponent } from './upload-image/upload-image.component';
 import { WaitingReportComponent } from './waiting-report/waiting-report.component';
 import { DoctorReportViewComponent } from './doctor-report-view/doctor-report-view.component';
 import { CompletedReportsComponent } from './completed-reports/completed-reports.component';
+import { PrintReportComponent } from './print-report/print-report.component';
+import { AdminReportPageComponent } from './admin-report-page/admin-report-page.component';
 
 const routes: Routes = [
   {
@@ -56,6 +58,15 @@ const routes: Routes = [
   {
     path: 'complete-reports',
     component: CompletedReportsComponent
+  }
+  ,
+  {
+    path: 'print-report',
+    component: PrintReportComponent
+  },
+  {
+    path: 'admin-report',
+    component: AdminReportPageComponent
   }
 ];
 

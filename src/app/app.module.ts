@@ -22,6 +22,7 @@ import { DoctorReportViewComponent } from './doctor-report-view/doctor-report-vi
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
 import { CompletedReportsComponent } from './completed-reports/completed-reports.component';
 import { PrintReportComponent } from './print-report/print-report.component';
+import { AdminReportPageComponent } from './admin-report-page/admin-report-page.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { PrintReportComponent } from './print-report/print-report.component';
     WaitingReportComponent,
     DoctorReportViewComponent,
     CompletedReportsComponent,
-    PrintReportComponent
+    PrintReportComponent,
+    AdminReportPageComponent
   ],
   imports: [
     BrowserModule,
