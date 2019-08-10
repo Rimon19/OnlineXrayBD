@@ -1,5 +1,5 @@
 export class UploadImage { 
-    
+    $key:string;
     name: string;
     age: number;   
     sexId:string;

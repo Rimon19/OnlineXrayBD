@@ -3,8 +3,8 @@ import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage
 import { UploadImage } from './Model/upload-image';
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase/app';
-import { Observable } from 'rxjs';
-import { tap, finalize } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { tap, finalize, catchError } from 'rxjs/operators';
 import { async } from 'q';
 
 @Injectable({
@@ -18,6 +18,25 @@ export class UploadImageService {
   snapshot:Observable<any>;
   downloadURL:string;
   constructor(private db: AngularFireDatabase, private storage:AngularFireStorage) { }
+
+ getAll():Observable<UploadImage>{
+  return this.db.list('/uploadImage').valueChanges().pipe(catchError(err => of(null)));
+ }
+
+ getUploadImageByUserId(userId: string):Observable<UploadImage> {
+ return this.db.list('/uploadImage/', ref => ref
+ .orderByChild('uid')
+ .equalTo(userId))
+ .valueChanges()
+ .pipe(catchError(err => of(null)));
+      
+}
+
+ getById(userId):Observable<UploadImage>{
+  return this.db.list('/uploadImage/' + userId)
+  .valueChanges()
+  .pipe(catchError(err => of(null)));
+ }
 
   startUpLoad(uploadImage: UploadImage){
     const path=`uploadImage/${Date.now()}_${uploadImage.imageUrlFile.name}`;

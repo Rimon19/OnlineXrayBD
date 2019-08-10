@@ -180,45 +180,20 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Philip Smead</td>
-                    <td><span class="badge badge-success">AB Sumon</span></td>
-                    <td>CHest Pain</td>
+                  <tr *ngFor="let uploadImage of uploadedImagesInfos">
+                    <td>{{uploadImage.name}}</td>
+                    <td><span class="badge badge-success">{{uploadImage.refBy}}</span></td>
+                    <td>{{uploadImage.problem}}</td>
 
-                    <td>15/1/2018</td>
-
-                    <td>
-                      <div>
-                        <a href="#" class="btn btn-primary btn-sm">Edit</a>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Philip Smead</td>
-                    <td><span class="badge badge-success">AB Sumon</span></td>
-                    <td>CHest Pain</td>
-
-                    <td>15/1/2018</td>
+                    <td>{{uploadImage.entryDate | date}}</td>
 
                     <td>
                       <div>
-                        <a href="#" class="btn btn-primary btn-sm">Edit</a>
+                        <a [routerLink]="['/upload-image/']" class="btn btn-primary btn-sm">Edit</a>
                       </div>
                     </td>
                   </tr>
-                  <tr>
-                    <td>Philip Smead</td>
-                    <td><span class="badge badge-success">AB Sumon</span></td>
-                    <td>CHest Pain</td>
-
-                    <td>15/1/2018</td>
-
-                    <td>
-                      <div>
-                        <a href="#" class="btn btn-primary btn-sm">Edit</a>
-                      </div>
-                    </td>
-                  </tr>
+                 
 
                 </tbody>
               </table>
