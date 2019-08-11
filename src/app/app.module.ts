@@ -23,7 +23,7 @@ import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage
 import { CompletedReportsComponent } from './completed-reports/completed-reports.component';
 import { PrintReportComponent } from './print-report/print-report.component';
 import { AdminReportPageComponent } from './admin-report-page/admin-report-page.component';
-
+import { DataTableModule } from 'angular5-data-table';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +48,7 @@ import { AdminReportPageComponent } from './admin-report-page/admin-report-page.
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    DataTableModule
   
 
   ],

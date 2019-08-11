@@ -140,59 +140,56 @@
           <div class="card-body">
             <h4 class="mt-0 header-title mb-4">Completed Report</h4>
             <div class="table-responsive">
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">Patient Name</th>
-                    <th scope="col">Ref by</th>
-                    <th scope="col">Problem</th>
-                    <th scope="col" colspan="2">Date</th>
 
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Philip Smead</td>
-                    <td><span class="badge badge-success">AB Sumon</span></td>
-                    <td>CHest Pain</td>
+                <data-table
+                [items]="items"
+                [itemCount]="itemCount"
+                (reload)="reloadItems($event)">
+              
+                <data-table-column
+                  [property]="'name'"  
+                  [header]="'Name'"
+                  [sortable]="true"
+                  [resizable]="true"
+                ></data-table-column>
+                
+                <data-table-column 
+                 [property]="'refBy'" 
+                 [header]="'Ref By'"
+                 [sortable]="true" 
+                 [resizable]="true">
+                  </data-table-column>
+              
+                  <data-table-column 
+                  [property]="'problem'" 
+                  [header]="'Problem'"
+                  [sortable]="true" 
+                  [resizable]="true">
+                </data-table-column>
 
-                    <td>15/1/2018</td>
+                <data-table-column 
+                [property]="'entryDate'" 
+                [header]="'Date'"
+                [sortable]="true" 
+                [resizable]="true">
 
-                    <td>
-                      <div>
-                        <a routerLink="/print-report" class="btn btn-primary btn-sm">View</a>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Philip Smead</td>
-                    <td><span class="badge badge-success">AB Sumon</span></td>
-                    <td>CHest Pain</td>
+                <ng-template #dataTableCell let-item="item">
+                    {{ item.entryDate | date }}
+                  </ng-template>
+              </data-table-column>                                                                
+              
+                <data-table-column 
+                  [property]="'$key'"  
+                  [header]="'Action'"
+                >
+                  <ng-template #dataTableCell let-item="item">
+                      <a routerLink="/print-report" class="btn btn-primary btn-sm">View</a>
+                    <!-- <a  [routerLink]="['/admin/products/', item.$key]">Edit </a>                   -->
+                  </ng-template>
+                </data-table-column>
+              
+              </data-table>
 
-                    <td>15/1/2018</td>
-
-                    <td>
-                      <div>
-                        <a routerLink="/print-report" class="btn btn-primary btn-sm">View</a>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Philip Smead</td>
-                    <td><span class="badge badge-success">AB Sumon</span></td>
-                    <td>CHest Pain</td>
-
-                    <td>15/1/2018</td>
-
-                    <td>
-                      <div>
-                        <a routerLink="/print-report" class="btn btn-primary btn-sm">View</a>
-                      </div>
-                    </td>
-                  </tr>
-
-                </tbody>
-              </table>
             </div>
 
           </div>

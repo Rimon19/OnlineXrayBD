@@ -1,15 +1,47 @@
-import { Component, OnInit } from '@angular/core';
-
+import { UploadImageService } from './../upload-image.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { UploadImage } from '../Model/upload-image';
+import { DataTableResource } from 'angular5-data-table';
 @Component({
   selector: 'app-doctor-dashboard',
   templateUrl: './doctor-dashboard.component.html',
   styleUrls: ['./doctor-dashboard.component.sass']
 })
-export class DoctorDashboardComponent implements OnInit {
-
-  constructor() { }
+export class DoctorDashboardComponent implements OnInit,OnDestroy {
+  subscription: Subscription;
+  uploadImage: UploadImage;
+  tableResource: DataTableResource<UploadImage>;
+  items: UploadImage[] = [];
+  itemCount: number; 
+  constructor(private uploadImageService:UploadImageService) { }
 
   ngOnInit() {
+      this.subscription=this.uploadImageService.getAll().subscribe(data=>{
+        console.log(data);
+        this.uploadImage=data;
+        this.initializeTable(data);
+      });
+  }
+  
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
+  private initializeTable(uImage) {
+    this.tableResource = new DataTableResource(uImage);
+    this.tableResource.query({ offset: 0 })
+      .then(items => this.items = items);
+    this.tableResource.count()
+      .then(count => this.itemCount = count);
+  }
+
+
+  reloadItems(params) {
+    if (!this.tableResource) return;
+
+    this.tableResource.query(params)
+      .then(items => this.items = items);    
+  }
+  
 }

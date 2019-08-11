@@ -75,7 +75,7 @@
               <table class="table table-hover">
                 <thead>
                   <tr>
-                    <th scope="col">Sl</th>
+                   
                     <th scope="col">Patient Name</th>
                     <th scope="col">Age</th>
                     <th scope="col">Sex</th>
@@ -86,13 +86,13 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Philip Smead</td>
-                    <td>56</td>
-                    <td>Male</td>
-                    <td>ABC</td>
-                    <td><span class="badge badge-success">AB Sumon</span></td>
+                  <tr *ngFor="let uploadImage of uploadedImagesInfos">
+                   
+                    <td>{{uploadImage.name}}</td>
+                    <td>{{uploadImage.age}}</td>
+                    <td>{{uploadImage.sexId}}</td>
+                    <td>{{uploadImage.xrayName}}</td>
+                    <td><span class="badge badge-success">{{uploadImage.refBy}}</span></td>
 
 
 
