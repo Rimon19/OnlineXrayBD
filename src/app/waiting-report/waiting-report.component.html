@@ -73,39 +73,72 @@
             <h4 class="mt-0 header-title mb-4">Waiting Report</h4>
             <div class="table-responsive">
               <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">Sl</th>
-                    <th scope="col">Patient Name</th>
-                    <th scope="col">Age</th>
-                    <th scope="col">Sex</th>
-                    <th scope="col">X-Ray Name</th>
-                    <th scope="col" colspan="2">Ref by</th>
+                
+                <data-table
+                [items]="items"
+                [itemCount]="itemCount"
+                (reload)="reloadItems($event)">
+              
+                <data-table-column
+                  [property]="'name'"  
+                  [header]="'Name'"
+                  [sortable]="true"
+                  [resizable]="true"
+                ></data-table-column>
+                
+                <data-table-column
+                  [property]="'age'"  
+                  [header]="'Age'"
+                  [sortable]="true"
+                  [resizable]="true"
+                ></data-table-column>
+
+                <data-table-column
+                  [property]="'sexId'"  
+                  [header]="'sex'"
+                  [sortable]="true"
+                  [resizable]="true"
+                ></data-table-column>
+
+                
+                <data-table-column
+                  [property]="'xrayName'"  
+                  [header]="'X-ray Name'"
+                  [sortable]="true"
+                  [resizable]="true"
+                ></data-table-column>
 
 
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Philip Smead</td>
-                    <td>56</td>
-                    <td>Male</td>
-                    <td>ABC</td>
-                    <td><span class="badge badge-success">AB Sumon</span></td>
+                <data-table-column 
+                 [property]="'refBy'" 
+                 [header]="'Ref By'"
+                 [sortable]="true" 
+                 [resizable]="true">
+                  </data-table-column>
+                               
 
+                <data-table-column 
+                [property]="'entryDate'" 
+                [header]="'Date'"
+                [sortable]="true" 
+                [resizable]="true">
 
-
-
-                    <td>
-                      <div>
-                        <a routerLink="/doctor_report_view" class="btn btn-primary btn-sm">view</a>
-                      </div>
-                    </td>
-                  </tr>
-
-
-                </tbody>
+                <ng-template #dataTableCell let-item="item">
+                    {{ item.entryDate | date }}
+                  </ng-template>
+              </data-table-column>                                                                
+              
+                <data-table-column 
+                  [property]="'$key'"  
+                  [header]="'Action'"
+                >
+                  <ng-template #dataTableCell let-item="item">
+                      <a routerLink="/print-report" class="btn btn-primary btn-sm">View</a>
+                    <!-- <a  [routerLink]="['/admin/products/', item.$key]">Edit </a>                   -->
+                  </ng-template>
+                </data-table-column>
+              
+              </data-table>
               </table>
             </div>
 
