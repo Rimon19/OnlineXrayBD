@@ -25,6 +25,22 @@ export class UserService {
     return this.db.list('/users');
   }
   
+  // getUsers(): Observable<any> {
+  //   return new Observable((observer) => {
+  //     this.db.list('/users').snapshotChanges().pipe().subscribe((querySnapshot) => {
+  //       let boards = [];
+  //       querySnapshot.forEach((doc) => {
+  //         let data = doc;
+  //         boards.push({
+  //           key: doc.key,
+            
+  //         });
+  //       });
+  //       observer.next(boards);
+  //     });
+  //   });
+  // }
+  
 
   save(user: firebase.User) {
     this.db.object('/users/' + user.uid).update({

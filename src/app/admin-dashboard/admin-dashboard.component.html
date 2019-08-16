@@ -142,25 +142,43 @@
                     <div class="card-body">
                         <h4 class="mt-0 header-title mb-4">Users</h4>
                         <div class="table-responsive">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Institute</th>
-                                        <th scope="col">Owner Name</th>
-                                        <th scope="col">User Name</th>
-                                        <th scope="col">Mobile</th>
+                            <table class="table table-hover">                                                          
+                                <data-table
+                                [items]="items"
+                                [itemCount]="itemCount"
+                                (reload)="reloadItems($event)">
 
+                                <data-table-column
+                                  [property]="'inistituteName'"  
+                                  [header]="'Institute Name'"
+                                  [sortable]="true"
+                                  [resizable]="true"
+                                ></data-table-column>
+                              
+                                <data-table-column
+                                  [property]="'fullName'"  
+                                  [header]="'Owner Name'"
+                                  [sortable]="true"
+                                  [resizable]="true"
+                                ></data-table-column>
+                                
+                                <data-table-column
+                                  [property]="'email'"  
+                                  [header]="'User Name'"
+                                  [sortable]="true"
+                                  [resizable]="true"
+                                ></data-table-column>
+                               
+                                <data-table-column
+                                [property]="'mobile'"  
+                                [header]="'Mobile'"
+                                [sortable]="true"
+                                [resizable]="true"
+                              ></data-table-column>
+                                
+                              
+                              </data-table>
 
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>ABC diagonstic</td>
-                                        <td>Ab Sumon</td>
-                                        <td>Ab@gmail.com</td>
-                                        <td>85657956</td>
-                                    </tr>
-                                </tbody>
                             </table>
                         </div>
 
@@ -173,24 +191,43 @@
                         <h4 class="mt-0 header-title mb-4">Doctors</h4>
                         <div class="table-responsive">
                             <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Address</th>
-                                        <th scope="col">UserName</th>
-                                        <th scope="col">Mobile</th>
+                                 <data-table
+                                [items]="items"
+                                [itemCount]="itemCount"
+                                (reload)="reloadItems($event)">
 
+                                <data-table-column
+                                [property]="'fullName'"  
+                                [header]="'Name'"
+                                [sortable]="true"
+                                [resizable]="true"
+                              ></data-table-column>
 
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>AB Sumon</td>
-                                        <td>Nilphamari</td>
-                                        <td>Ab@gmail.com</td>
-                                        <td>85657956</td>
-                                    </tr>
-                                </tbody>
+                                <data-table-column
+                                  [property]="'address'"  
+                                  [header]="'Address'"
+                                  [sortable]="true"
+                                  [resizable]="true"
+                                ></data-table-column>
+                              
+                               
+                                
+                                <data-table-column
+                                  [property]="'email'"  
+                                  [header]="'User Name'"
+                                  [sortable]="true"
+                                  [resizable]="true"
+                                ></data-table-column>
+                               
+                                <data-table-column
+                                [property]="'mobile'"  
+                                [header]="'Mobile'"
+                                [sortable]="true"
+                                [resizable]="true"
+                              ></data-table-column>
+                                
+                              
+                              </data-table>
                             </table>
                         </div>
 

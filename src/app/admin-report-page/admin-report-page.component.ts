@@ -22,6 +22,7 @@ export class AdminReportPageComponent implements OnInit,OnDestroy {
       this.subscription=this.uploadImageService.getAll().subscribe(data=>{
         console.log(data);
         this.uploadImage=data;
+       
         this.initializeTable(data);
       });
   }
