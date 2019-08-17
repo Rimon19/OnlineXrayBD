@@ -12,39 +12,81 @@ import { UploadImageService } from '../upload-image.service';
 export class AdminReportPageComponent implements OnInit,OnDestroy {
 
   subscription: Subscription;
-  uploadImage: UploadImage;
-  tableResource: DataTableResource<UploadImage>;
-  items: UploadImage[] = [];
-  itemCount: number; 
+
+  uploadImageForWaitingReport: UploadImage[];
+  tableResourceForWaitingReport: DataTableResource<UploadImage>;
+  itemsForWaitingReport: UploadImage[] = [];
+  itemCountForWaitingReport: number; 
+
+
+  uploadImageForCompletedReport: UploadImage[];
+  tableResourceForCompletedReport: DataTableResource<UploadImage>;
+  itemsForCompletedReport: UploadImage[] = [];
+  itemCountForCompletedReport: number; 
+
   constructor(private uploadImageService:UploadImageService) { }
 
   ngOnInit() {
-      this.subscription=this.uploadImageService.getAll().subscribe(data=>{
-        console.log(data);
-        this.uploadImage=data;
-       
-        this.initializeTable(data);
-      });
+    var x = this.uploadImageService.getAllImageUpload();
+    this.subscription= x.snapshotChanges().subscribe(item => {
+      this.uploadImageForWaitingReport = [];
+      this.uploadImageForCompletedReport=[];
+      item.forEach(element => {
+        var y = element.payload.toJSON();
+        y["key"] = element.key;       
+      
+       if(y['isWaitingReport']==true) {
+        this.uploadImageForWaitingReport.push(y as UploadImage);
+       }    
+      
+       if(y['isCompletedReport']==true){
+        this.uploadImageForCompletedReport.push(y as UploadImage);
+
+       }
+      });  
+    console.log(this.uploadImageForCompletedReport);
+      this.initializeTableForWaitingReport(this.uploadImageForWaitingReport);    
+      this.initializeTableForCompletedReport(this.uploadImageForCompletedReport);
+      
+    });
+    
   }
   
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
-  private initializeTable(uImage) {
-    this.tableResource = new DataTableResource(uImage);
-    this.tableResource.query({ offset: 0 })
-      .then(items => this.items = items);
-    this.tableResource.count()
-      .then(count => this.itemCount = count);
+  private initializeTableForWaitingReport(uImage) {
+    this.tableResourceForWaitingReport = new DataTableResource(uImage);
+    this.tableResourceForWaitingReport.query({ offset: 0 })
+      .then(items => this.itemsForWaitingReport = items);
+    this.tableResourceForWaitingReport.count()
+      .then(count => this.itemCountForWaitingReport = count);
   }
 
 
-  reloadItems(params) {
-    if (!this.tableResource) return;
+  reloadItemsForWaitingReport(params) {
+    if (!this.tableResourceForWaitingReport) return;
 
-    this.tableResource.query(params)
-      .then(items => this.items = items);    
+    this.tableResourceForWaitingReport.query(params)
+      .then(items => this.itemsForWaitingReport = items);    
+  }
+
+
+  private initializeTableForCompletedReport(uImage) {
+    this.tableResourceForCompletedReport = new DataTableResource(uImage);
+    this.tableResourceForCompletedReport.query({ offset: 0 })
+      .then(items => this.itemsForCompletedReport = items);
+    this.tableResourceForCompletedReport.count()
+      .then(count => this.itemCountForCompletedReport = count);
+  }
+
+
+  reloadItemsForCompletedReport(params) {
+    if (!this.tableResourceForCompletedReport) return;
+
+    this.tableResourceForCompletedReport.query(params)
+      .then(items => this.itemsForCompletedReport = items);    
   }
 
 }

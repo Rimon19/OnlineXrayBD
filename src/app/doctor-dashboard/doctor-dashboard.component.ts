@@ -10,18 +10,26 @@ import { DataTableResource } from 'angular5-data-table';
 })
 export class DoctorDashboardComponent implements OnInit,OnDestroy {
   subscription: Subscription;
-  uploadImage: UploadImage;
+  uploadImage: UploadImage[];
   tableResource: DataTableResource<UploadImage>;
   items: UploadImage[] = [];
   itemCount: number; 
   constructor(private uploadImageService:UploadImageService) { }
 
   ngOnInit() {
-      this.subscription=this.uploadImageService.getAll().subscribe(data=>{
-        console.log(data);
-        this.uploadImage=data;
-        this.initializeTable(data);
-      });
+    var x = this.uploadImageService.getAllImageUpload();
+    this.subscription= x.snapshotChanges().pipe().subscribe(item => {
+      this.uploadImage = [];
+      item.forEach(element => {
+        var y = element.payload.toJSON();
+        y["key"] = element.key;
+        if(y['isCompletedReport']==true)                 
+                this.uploadImage.push(y as UploadImage);
+                  
+      });      
+      this.initializeTable(this.uploadImage);                    
+
+    }); 
   }
   
   ngOnDestroy() {

@@ -192,9 +192,9 @@
                         <div class="table-responsive">
                             <table class="table table-hover">
                                  <data-table
-                                [items]="items"
-                                [itemCount]="itemCount"
-                                (reload)="reloadItems($event)">
+                                [items]="doctorItems"
+                                [itemCount]="doctorItemCount"
+                                (reload)="reloadItemsForDoctors($event)">
 
                                 <data-table-column
                                 [property]="'fullName'"  

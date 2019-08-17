@@ -15,6 +15,12 @@ subscription: Subscription;
 tableResource: DataTableResource<AppUser>;
 items: AppUser[] = [];
 itemCount: number; 
+
+doctors=[];
+doctorTableResource:DataTableResource<any>;
+doctorItems=[];
+doctorItemCount:number;
+
   constructor(private userServices:UserService) { }
 
 //   ngOnInit() {
@@ -28,13 +34,23 @@ itemCount: number;
     var x = this.userServices.getAllUsers();
     this.subscription= x.snapshotChanges().subscribe(item => {
       this.appUser = [];
+      this.doctors=[];
       item.forEach(element => {
         var y = element.payload.toJSON();
         y["key"] = element.key;
+      
+       if(y['isUser']==true) {
         this.appUser.push(y as AppUser);
+       }    
+      
+       if(y['isDoctor']==true){
+        this.doctors.push(y as AppUser);
+
+       }
       });  
-      console.log(this.appUser);
+
       this.initializeTable(this.appUser);    
+      this.initializeTableForDoctor(this.doctors);
     });
     
   }
@@ -58,5 +74,21 @@ itemCount: number;
     this.tableResource.query(params)
       .then(items => this.items = items);    
   }
+
+  private initializeTableForDoctor(user) {
+    this.doctorTableResource = new DataTableResource(user);
+    this.doctorTableResource.query({ offset: 0 })
+      .then(items => this.doctorItems = items);
+    this.doctorTableResource.count()
+      .then(count => this.doctorItemCount = count);
+  }
+
+ reloadItemsForDoctors(params) {
+    if (!this.doctorTableResource) return;
+
+    this.doctorTableResource.query(params)
+      .then(items => this.doctorItems = items);    
+  }
+ 
 
 }

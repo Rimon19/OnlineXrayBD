@@ -19,15 +19,19 @@ export class UploadImageService {
   downloadURL:string;
   constructor(private db: AngularFireDatabase, private storage:AngularFireStorage) { }
 
- getAll():Observable<UploadImage>{
-  return this.db.list('/uploadImage').valueChanges().pipe(catchError(err => of(null)));
- }
+//  getAll():Observable<UploadImage>{
+//   return this.db.list('/uploadImage').valueChanges().pipe(catchError(err => of(null)));
+//  }
 
- getUploadImageByUserId(userId: string):Observable<UploadImage> {
+ getAllImageUpload() { 
+  return this.db.list('/uploadImage');
+}
+
+ getUploadImageByUserId(userId: string) {
  return this.db.list('/uploadImage/', ref => ref
  .orderByChild('uid')
  .equalTo(userId))
- .valueChanges()
+ .snapshotChanges()
  .pipe(catchError(err => of(null)));
       
 }

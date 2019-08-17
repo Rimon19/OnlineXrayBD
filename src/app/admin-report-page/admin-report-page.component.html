@@ -73,9 +73,9 @@
             <div class="table-responsive">
               <table class="table table-hover">
                 <data-table
-                [items]="items"
-                [itemCount]="itemCount"
-                (reload)="reloadItems($event)">
+                [items]="itemsForWaitingReport"
+                [itemCount]="itemCountForWaitingReport"
+                (reload)="reloadItemsForWaitingReport($event)">
               
                 <data-table-column
                   [property]="'name'"  
@@ -154,9 +154,9 @@
             <div class="table-responsive">
               <table class="table table-hover">
                 <data-table
-                [items]="items"
-                [itemCount]="itemCount"
-                (reload)="reloadItems($event)">
+                [items]="itemsForCompletedReport"
+                [itemCount]="itemCountForCompletedReport"
+                (reload)="reloadItemsForCompletedReport($event)">
               
                 <data-table-column
                   [property]="'name'"  

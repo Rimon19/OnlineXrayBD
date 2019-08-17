@@ -1,5 +1,5 @@
 export class UploadImage { 
-    $key:string;
+    key:string;
     name: string;
     age: number;   
     sexId:string;
@@ -13,4 +13,7 @@ export class UploadImage {
     entryDate:number;
     searchDate:string;
     uid:string;
+
+    isWaitingReport:boolean;
+    isCompletedReport:boolean;
   }
