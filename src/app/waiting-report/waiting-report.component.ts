@@ -25,7 +25,7 @@ export class WaitingReportComponent implements OnInit ,OnDestroy{
           item.forEach(element => {
             var y = element.payload.toJSON();
             y["key"] = element.key; 
-            if(y['isWaitingReport']==true)                   
+            if(y['isCompletedReport']==false)                   
                    this.uploadImage.push(y as UploadImage);
                       
           });           

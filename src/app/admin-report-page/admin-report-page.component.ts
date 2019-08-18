@@ -35,7 +35,7 @@ export class AdminReportPageComponent implements OnInit,OnDestroy {
         var y = element.payload.toJSON();
         y["key"] = element.key;       
       
-       if(y['isWaitingReport']==true) {
+       if(y['isCompletedReport']==false) {
         this.uploadImageForWaitingReport.push(y as UploadImage);
        }    
       

@@ -52,7 +52,7 @@ const routes: Routes = [
     component: WaitingReportComponent
   },
   {
-    path: 'doctor_report_view',
+    path: 'doctor_report_view/:id',
     component: DoctorReportViewComponent
   },
   {
@@ -60,6 +60,10 @@ const routes: Routes = [
     component: CompletedReportsComponent
   }
   ,
+  {
+    path: 'print-report',
+    component: PrintReportComponent
+  },
   {
     path: 'print-report',
     component: PrintReportComponent

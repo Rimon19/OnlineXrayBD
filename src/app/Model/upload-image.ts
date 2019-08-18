@@ -13,7 +13,8 @@ export class UploadImage {
     entryDate:number;
     searchDate:string;
     uid:string;
-
-    isWaitingReport:boolean;
+    
     isCompletedReport:boolean;
+
+    comment:string;
   }

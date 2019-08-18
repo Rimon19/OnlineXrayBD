@@ -133,7 +133,7 @@
                   [header]="'Action'"
                 >
                   <ng-template #dataTableCell let-item="item">
-                      <a routerLink="/print-report" class="btn btn-primary btn-sm">View</a>
+                      <a [routerLink]="['/doctor_report_view/',item.key]" class="btn btn-primary btn-sm">View</a>
                     <!-- <a  [routerLink]="['/admin/products/', item.$key]">Edit </a>                   -->
                   </ng-template>
                 </data-table-column>

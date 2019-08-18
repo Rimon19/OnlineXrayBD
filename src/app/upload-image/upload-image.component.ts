@@ -25,7 +25,7 @@ export class UploadImageComponent implements OnInit {
      this.authServic.appUid.subscribe(data=>{
        if(data) uploadImage.uid=data.uid;
      })
-     uploadImage.isWaitingReport=true;
+     uploadImage.isCompletedReport=false;
       this.uploadImageService.startUpLoad(uploadImage);
      }
 

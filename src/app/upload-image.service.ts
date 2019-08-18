@@ -42,6 +42,14 @@ export class UploadImageService {
   .pipe(catchError(err => of(null)));
  }
 
+ getUploadedImageById(id){
+   return this.db.object('/uploadImage/'+id);
+ }
+
+ update(id, obj) {
+  return this.db.object('/uploadImage/' + id).update(obj);
+ }
+
   startUpLoad(uploadImage: UploadImage){
     const path=`uploadImage/${Date.now()}_${uploadImage.imageUrlFile.name}`;
     const ref=this.storage.ref(path);

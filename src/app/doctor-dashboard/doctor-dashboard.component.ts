@@ -38,9 +38,11 @@ export class DoctorDashboardComponent implements OnInit,OnDestroy {
 
   private initializeTable(uImage) {
     this.tableResource = new DataTableResource(uImage);
-    this.tableResource.query({ offset: 0 })
+    this.tableResource
+      .query({ offset: 0 })
       .then(items => this.items = items);
-    this.tableResource.count()
+      
+       this.tableResource.count()
       .then(count => this.itemCount = count);
   }
 
