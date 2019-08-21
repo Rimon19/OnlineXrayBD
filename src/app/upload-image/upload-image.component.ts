@@ -2,6 +2,7 @@ import { AuthService } from './../auth.service';
 import { UploadImageService } from './../upload-image.service';
 import { Component, OnInit } from '@angular/core';
 import { UploadImage } from '../Model/upload-image';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-upload-image',
@@ -11,7 +12,8 @@ import { UploadImage } from '../Model/upload-image';
 export class UploadImageComponent implements OnInit {
   selectedFilesForImage:FileList;
   uploadImage=new UploadImage;
-  constructor(private uploadImageService:UploadImageService,private authServic:AuthService) { }
+  constructor(private uploadImageService:UploadImageService,private authServic:AuthService,
+    private router:Router) { }
  
   saveImageUpload(uploadImage){
 
@@ -27,6 +29,7 @@ export class UploadImageComponent implements OnInit {
      })
      uploadImage.isCompletedReport=false;
       this.uploadImageService.startUpLoad(uploadImage);
+      this.router.navigate(['/user-dashboard']);
      }
 
 

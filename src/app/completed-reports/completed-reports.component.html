@@ -73,39 +73,58 @@
             <h4 class="mt-0 header-title mb-4">Completed Report</h4>
             <div class="table-responsive">
               <table class="table table-hover">
-                <thead>
-                  <tr>
-                   
-                    <th scope="col">Patient Name</th>
-                    <th scope="col">Age</th>
-                    <th scope="col">Sex</th>
-                    <th scope="col">X-Ray Name</th>
-                    <th scope="col" colspan="2">Checked by</th>
+         
+                <data-table
+                [items]="items"
+                [itemCount]="itemCount"
+                (reload)="reloadItems($event)">
+              
+                <data-table-column
+                  [property]="'name'"  
+                  [header]="'Name'"
+                  [sortable]="true"
+                  [resizable]="true"
+                ></data-table-column>
+                
+                <data-table-column 
+                 [property]="'age'" 
+                 [header]="'Age'"
+                 [sortable]="true" 
+                 [resizable]="true">
+                  </data-table-column>
+              
+                  <data-table-column 
+                  [property]="'sexId'" 
+                  [header]="'Sex'"
+                  [sortable]="true" 
+                  [resizable]="true">
+                </data-table-column>
 
-
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let uploadImage of uploadedImagesInfos">
-                   
-                    <td>{{uploadImage.name}}</td>
-                    <td>{{uploadImage.age}}</td>
-                    <td>{{uploadImage.sexId}}</td>
-                    <td>{{uploadImage.xrayName}}</td>
-                    <td><span class="badge badge-success">{{uploadImage.refBy}}</span></td>
-
-
-
-
-                    <td>
-                      <div>
-                        <a routerLink="/print-report" class="btn btn-primary btn-sm">view</a>
-                      </div>
-                    </td>
-                  </tr>
-
-
-                </tbody>
+                <data-table-column 
+                [property]="'xrayName'" 
+                [header]="'X-Ray Name'"
+                [sortable]="true" 
+                [resizable]="true">
+              </data-table-column>
+                                              
+              <data-table-column 
+              [property]="'seenBy'" 
+              [header]="'Checked By'"
+              [sortable]="true" 
+              [resizable]="true">
+            </data-table-column>
+              
+                <data-table-column 
+                  [property]="'key'"  
+                  [header]="'Action'"
+                >
+                  <ng-template #dataTableCell let-item="item">
+                      <a [routerLink]="['/print-report/',item.key]" class="btn btn-primary btn-sm">View</a>
+                    <!-- <a  [routerLink]="['/admin/products/', item.$key]">Edit </a>                   -->
+                  </ng-template>
+                </data-table-column>
+              
+              </data-table>
               </table>
             </div>
 

@@ -48,6 +48,10 @@ const routes: Routes = [
     component: UploadImageComponent
   },
   {
+    path: 'upload-image/:id',
+    component: UploadImageComponent
+  },
+  {
     path: 'waiting-report',
     component: WaitingReportComponent
   },
@@ -65,7 +69,7 @@ const routes: Routes = [
     component: PrintReportComponent
   },
   {
-    path: 'print-report',
+    path: 'print-report/:id',
     component: PrintReportComponent
   },
   {

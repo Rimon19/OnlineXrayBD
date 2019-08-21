@@ -170,32 +170,56 @@
             <h4 class="mt-0 header-title mb-4">Uploads</h4>
             <div class="table-responsive">
               <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">Patient Name</th>
-                    <th scope="col">Ref by</th>
-                    <th scope="col">Problem</th>
-                    <th scope="col" colspan="2">Date</th>
 
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let uploadImage of uploadedImagesInfos">
-                    <td>{{uploadImage.name}}</td>
-                    <td><span class="badge badge-success">{{uploadImage.refBy}}</span></td>
-                    <td>{{uploadImage.problem}}</td>
-
-                    <td>{{uploadImage.entryDate | date}}</td>
-
-                    <td>
-                      <div>
-                        <a [routerLink]="['/upload-image/']" class="btn btn-primary btn-sm">Edit</a>
-                      </div>
-                    </td>
-                  </tr>
-                 
-
-                </tbody>
+                  <data-table
+                  [items]="items"
+                  [itemCount]="itemCount"
+                  (reload)="reloadItems($event)">
+                
+                  <data-table-column
+                    [property]="'name'"  
+                    [header]="'Name'"
+                    [sortable]="true"
+                    [resizable]="true"
+                  ></data-table-column>
+                  
+                  <data-table-column 
+                   [property]="'refBy'" 
+                   [header]="'Ref By'"
+                   [sortable]="true" 
+                   [resizable]="true">
+                    </data-table-column>
+                
+                    <data-table-column 
+                    [property]="'problem'" 
+                    [header]="'Problem'"
+                    [sortable]="true" 
+                    [resizable]="true">
+                  </data-table-column>
+  
+                  <data-table-column 
+                  [property]="'entryDate'" 
+                  [header]="'Date'"
+                  [sortable]="true" 
+                  [resizable]="true">
+  
+                  <ng-template #dataTableCell let-item="item">
+                      {{ item.entryDate | date }}
+                    </ng-template>
+                </data-table-column>                                                                
+                
+                  <data-table-column 
+                    [property]="'key'"  
+                    [header]="'Action'"
+                  >
+                    <ng-template #dataTableCell let-item="item">
+                        <a [routerLink]="['/upload-image/',item.key]" class="btn btn-primary btn-sm">Edit</a>
+                      <!-- <a  [routerLink]="['/admin/products/', item.$key]">Edit </a>                   -->
+                    </ng-template>
+                  </data-table-column>
+                
+                </data-table>
+               
               </table>
             </div>
 

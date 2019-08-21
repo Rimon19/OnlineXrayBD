@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { UploadImage } from '../Model/upload-image';
 import { AuthService } from '../auth.service';
 import { Subscription, Subscriber } from 'rxjs';
+import { DataTableResource } from 'angular5-data-table';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -13,6 +14,10 @@ import { Subscription, Subscriber } from 'rxjs';
 export class UserDashboardComponent implements OnInit {
  uploadedImagesInfos:UploadImage[];
  subscription:Subscription;
+
+ tableResource: DataTableResource<UploadImage>;
+ items: UploadImage[] = [];
+ itemCount: number; 
   constructor(private uploadeImageService:UploadImageService,
     private authServic:AuthService) { }
 
@@ -34,6 +39,7 @@ export class UserDashboardComponent implements OnInit {
                       
           });                      
     
+          this.initializeTable(this.uploadedImagesInfos);
         }); 
 
       }
@@ -45,4 +51,24 @@ export class UserDashboardComponent implements OnInit {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
+
+
+  private initializeTable(uImage) {
+    this.tableResource = new DataTableResource(uImage);
+    this.tableResource
+      .query({ offset: 0 })
+      .then(items => this.items = items);
+      
+       this.tableResource.count()
+      .then(count => this.itemCount = count);
+  }
+
+
+  reloadItems(params) {
+    if (!this.tableResource) return;
+
+    this.tableResource.query(params)
+      .then(items => this.items = items);    
+  }
+
 }
