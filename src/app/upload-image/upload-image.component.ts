@@ -33,7 +33,22 @@ export class UploadImageComponent implements OnInit {
      }
 
 
+ edit(uploadImage){
+   //get edit id
+
+   //then get object by id
+
+   //then delete them 
+
+   //then save new object newly
+
+
+ }
+
+
   ngOnInit() {
+
+    //get edit id
   }
 
   detectFilesForImageUrlFile(event) {

@@ -71,4 +71,11 @@ export class UserDashboardComponent implements OnInit {
       .then(items => this.items = items);    
   }
 
+
+  delete(obj){
+    this.uploadeImageService.deleteUpload(obj).then(t=>{
+      console.log("deleted");
+    });
+  }
+ 
 }

@@ -213,8 +213,8 @@
                     [header]="'Action'"
                   >
                     <ng-template #dataTableCell let-item="item">
-                        <a [routerLink]="['/upload-image/',item.key]" class="btn btn-primary btn-sm">Edit</a>
-                      <!-- <a  [routerLink]="['/admin/products/', item.$key]">Edit </a>                   -->
+                        <!-- <a [routerLink]="['/upload-image/',item.key]" class="btn btn-primary btn-sm">Edit</a> -->
+                       <a [routerLink]=""  (click)="delete(item)">delete </a>                  
                     </ng-template>
                   </data-table-column>
                 

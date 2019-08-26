@@ -51,7 +51,9 @@ export class UploadImageService {
  }
 
   startUpLoad(uploadImage: UploadImage){
+    
     const path=`uploadImage/${Date.now()}_${uploadImage.imageUrlFile.name}`;
+    uploadImage.imageUrlName=`${Date.now()}_${uploadImage.imageUrlFile.name}`;
     const ref=this.storage.ref(path);
     
     this.task=this.storage.upload(path,uploadImage.imageUrlFile);
@@ -63,9 +65,9 @@ export class UploadImageService {
     this.snapshot=this.task.snapshotChanges().pipe(
       finalize(async()=>{
         await ref.getDownloadURL().toPromise().then(t=>{
-
+           
           uploadImage.imageUrl=t;
-          this.db.list(`uploadImage/`).push(uploadImage);
+         this.db.list(`uploadImage/`).push(uploadImage);
         });
 
         
@@ -74,6 +76,24 @@ export class UploadImageService {
     );
         
     this.snapshot.subscribe(d=>{})
+  }
+
+  deleteUpload(uploadimage: UploadImage) {
+    console.log('uploadImageInfo',uploadimage)
+  return  this.deleteFileData(uploadimage.key)
+    .then( () => {
+      let storageRef = firebase.storage().ref();
+      storageRef.child(`uploadImage/${uploadimage.imageUrlName}`).delete().then(t=>{
+
+      });
+    })
+    .catch(error => console.log(error));
+
+  }
+
+
+  private deleteFileData(key: string) {
+    return this.db.list(`uploadImage/`).remove(key);
   }
 
   pushUpload(uploadImage: UploadImage) {
