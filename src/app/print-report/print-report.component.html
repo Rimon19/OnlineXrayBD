@@ -31,7 +31,7 @@
 </div>
 <!-- header-bg -->
 
-<div class="wrapper" id="content"  #content>
+<div class="wrapper" id="content" #content>
     <div class="container-fluid align-items-center" style="text-align: center" id="contentToConvert">
         <!-- Page-Title -->
         <div class="page-title-box" style="margin-top:200px">
@@ -46,44 +46,53 @@
 
         <div class="row" style="text-align: center;margin-left: 8%;margin-right: 8%">
 
-            <div class="col-xl-10">
+            <div class="col-sm-12">
 
-                <div class="table-responsive">
-                    <table class="table" style="border: 1px solid black">
+                <div>
+                    <table class="table-design" style="border: 1px solid black; width: 100%; height: 172px;">
                         <tr>
-                            <th>Patient Name :</th>
-                            <td>{{uploadImage.name}}</td>
+                            <th style="border-right: 1px solid black">Reference No :</th>
+                            <td>123908</td>
+                            <th style="border-right: 1px solid black">Date :</th>
+                            <td>{{uploadImage.entryDate|date}}</td>
 
                         </tr>
                         <tr>
-                            <th>Ref by:</th>
+                            <th style="border-right: 1px solid black">Patient Name :</th>
+                            <td>{{uploadImage.name}}</td>
+                            <th style="border-right: 1px solid black">Age :</th>
+                            <td>{{uploadImage.age}}</td>
+                            <th style="border-right: 1px solid black">Sex:</th>
+                            <td>{{uploadImage.sexId}}</td>
+
+                        </tr>
+                        <tr colspan="3">
+                            <th style="border-right: 1px solid black">Ref by:</th>
                             <td>{{uploadImage.refBy}}</td>
                         </tr>
-                        <tr>
-                            <th>Age :</th>
-                            <td>{{uploadImage.age}}</td>
-                        </tr>
 
                         <tr>
-                            <th>Sex:</th>
-                            <td>{{uploadImage.sexId}}</td>
+
                         </tr>
-                        <tr>
-                            <th>Date :</th>
-                            <td>{{uploadImage.entryDate|date}}</td>
+                        <tr colspan="3">
+                            <th style="border-right: 1px solid black">X-Ray of :</th>
+                            <td>X-ray of Abdominal Erectile Problem</td>
                         </tr>
 
                     </table>
                 </div>
             </div>
-          
+
 
         </div>
 
         <div class="row">
+            <div class="col-sm-12">
+                <h4 style="text-decoration: underline; text-align:center; margin-top:50px;">Name of the Xray</h4>
+            </div>
             <div class="col-sm-12" *ngFor='let uI of uploadImage.commentStringArray'>
                 <!-- <h4 style="text-align: center; text-decoration: underline">Doctor Comments</h4> -->
-                <h6 >{{uI}}</h6>
+                <h6 style=" text-align:left; margin-top:20px;margin-left:100px">{{uI}}</h6>
             </div>
         </div>
 
@@ -91,7 +100,7 @@
     <!-- end container-fluid -->
 </div>
 <div class="row">
-    <div class="col-sm-12" style="text-align: center;">
+    <div class="col-sm-12" style="text-align: center;margin-top:20px;">
         <!-- <input type="button" value="Download Pdf" (click)="captureScreen()" /> -->
         <input type="button" value="Print Report" (click)="print()" />
     </div>

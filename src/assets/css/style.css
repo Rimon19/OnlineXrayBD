@@ -61,6 +61,10 @@ body {
   }
 }
 
+.table-design tr{
+  border: 1px solid black;
+}
+
 html {
   overflow-x: hidden;
   position: relative;
