@@ -17,5 +17,6 @@ export class UploadImage {
     isCompletedReport:boolean;
 
     comment:string;
+    commentStringArray:any;
     seenBy:string;
   }

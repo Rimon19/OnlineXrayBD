@@ -44,9 +44,9 @@
             <!-- end row -->
         </div>
 
-        <div class="row">
+        <div class="row" style="text-align: center;margin-left: 8%;margin-right: 8%">
 
-            <div class="col-xl-6">
+            <div class="col-xl-10">
 
                 <div class="table-responsive">
                     <table class="table table-bordered">
@@ -64,16 +64,6 @@
                             <td>{{uploadImage.age}}</td>
                         </tr>
 
-
-                    </table>
-                </div>
-            </div>
-
-            <div class="col-xl-6">
-
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-
                         <tr>
                             <th>Sex:</th>
                             <td>{{uploadImage.sexId}}</td>
@@ -86,14 +76,14 @@
                     </table>
                 </div>
             </div>
-
+          
 
         </div>
 
         <div class="row">
-            <div class="col-sm-12">
-                <h4 style="text-align: left; text-decoration: underline">Doctor Comments</h4>
-                <h6 style="text-align: justify;margin-left: 8%;margin-right: 8%">{{uploadImage.comment}}</h6>
+            <div class="col-sm-12" *ngFor='let uI of uploadImage.commentStringArray'>
+                <!-- <h4 style="text-align: center; text-decoration: underline">Doctor Comments</h4> -->
+                <h6 >{{uI}}</h6>
             </div>
         </div>
 
@@ -102,7 +92,8 @@
 </div>
 <div class="row">
     <div class="col-sm-12" style="text-align: center;">
-        <input type="button" value="Print Report" (click)="captureScreen()" />
+        <!-- <input type="button" value="Download Pdf" (click)="captureScreen()" /> -->
+        <input type="button" value="Print Report" (click)="print()" />
     </div>
 </div>
 <!-- end wrapper -->
