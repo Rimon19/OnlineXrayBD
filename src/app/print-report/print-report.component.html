@@ -34,7 +34,7 @@
 <div class="wrapper" id="content" #content>
     <div class="container-fluid align-items-center" style="text-align: center" id="contentToConvert">
         <!-- Page-Title -->
-        <div class="page-title-box" style="margin-top:200px">
+        <div class="page-title-box">
             <div class="row align-items-center">
                 <div class="col-sm-12">
                     <h3 style="text-decoration: underline; text-align: center">X-Ray Report</h3>
@@ -49,34 +49,42 @@
             <div class="col-sm-12">
 
                 <div>
-                    <table>
+                    <table style="width: 100%; height:172px; border: 1px solid black">
                         <tr>
-                            <th >Reference No :</th>
-                            <td>123908</td>
-                            <th >Date :</th>
-                            <td>{{uploadImage.entryDate|date}}</td>
+                            <th style="border-right: 1px solid black;border-bottom: 1px solid black;">Reference No :
+                            </th>
+                            <td style="border-right: 1px solid black;border-bottom: 1px solid black;">123908</td>
+                            <th style="border-right: 1px solid black;border-bottom: 1px solid black;">Date :</th>
+                            <td colspan="3" style="border-bottom: 1px solid black;">
+                                {{uploadImage.entryDate|date}}</td>
 
                         </tr>
                         <tr>
-                            <th >Patient Name :</th>
-                            <td>{{uploadImage.name}}</td>
-                            <th >Age :</th>
-                            <td>{{uploadImage.age}}</td>
-                            <th >Sex:</th>
-                            <td>{{uploadImage.sexId}}</td>
+                            <th style="border-right: 1px solid black;border-bottom: 1px solid black;">Patient Name :
+                            </th>
+                            <td style="border-right: 1px solid black;border-bottom: 1px solid black;">
+                                {{uploadImage.name}}</td>
+                            <th style="border-right: 1px solid black;border-bottom: 1px solid black;">Age :</th>
+                            <td style="border-right: 1px solid black;border-bottom: 1px solid black;">
+                                {{uploadImage.age}}</td>
+                            <th style="border-right: 1px solid black;border-bottom: 1px solid black;">Sex:</th>
+                            <td style="border-right: 1px solid black;border-bottom: 1px solid black;">
+                                {{uploadImage.sexId}}</td>
 
                         </tr>
-                        <tr colspan="3">
-                            <th >Ref by:</th>
-                            <td>{{uploadImage.refBy}}</td>
+                        <tr>
+                            <th style="border-right: 1px solid black;border-bottom: 1px solid black;">Ref by:</th>
+                            <td colspan="5" style="border-bottom: 1px solid black;">
+                                {{uploadImage.refBy}}</td>
                         </tr>
 
                         <tr>
 
                         </tr>
-                        <tr colspan="3">
-                            <th >X-Ray of :</th>
-                            <td>{{uploadImage.commentTitle}}</td>
+                        <tr>
+                            <th style="border-right: 1px solid black;">X-Ray of :</th>
+                            <td colspan="5">
+                                {{uploadImage.commentTitle}}</td>
                         </tr>
 
                     </table>
@@ -88,7 +96,8 @@
 
         <div class="row">
             <div class="col-sm-12">
-                <h4 style="text-decoration: underline; text-align:center; margin-top:50px;">{{uploadImage.commentTitle }}</h4>
+                <h4 style="text-decoration: underline; text-align:center; margin-top:50px;">
+                    {{uploadImage.commentTitle }}</h4>
             </div>
             <div class="col-sm-12" *ngFor='let uI of uploadImage.commentStringArray'>
                 <!-- <h4 style="text-align: center; text-decoration: underline">Doctor Comments</h4> -->
@@ -102,12 +111,8 @@
 <div class="row">
     <div class="col-sm-12" style="text-align: center;margin-top:20px;">
         <!-- <input type="button" value="Download Pdf" (click)="captureScreen()" /> -->
-        <button
-          styleSheetFile="assets/css/style.css,assets/css/bootstrap.min.css"
-          [printStyle]="{h4 : {'color': 'red'},table : {'border': '1px solid black'},tr : {'border': '1px solid black'}}"
-         printSectionId="contentToConvert"
-         ngxPrint
-          >print</button> 
+        <button styleSheetFile="assets/css/bootstrap.min.css" [printStyle]="{h3 : {'margin-top': '180px'}}"
+            printSectionId="contentToConvert" ngxPrint>print</button>
     </div>
 </div>
 <!-- end wrapper -->
