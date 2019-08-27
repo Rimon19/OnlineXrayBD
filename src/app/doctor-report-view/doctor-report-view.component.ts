@@ -1,7 +1,7 @@
 import { AuthService } from './../auth.service';
 import { UploadImage } from './../Model/upload-image';
 import { UploadImageService } from './../upload-image.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Key } from 'protractor';
 import { map } from 'rxjs/operators';
@@ -17,7 +17,8 @@ export class DoctorReportViewComponent implements OnInit {
  uploadImage=new UploadImage();
   constructor(private route:ActivatedRoute,
     private uploadImageServices:UploadImageService,
-    private authService:AuthService) { }
+    private authService:AuthService,
+    private router:Router) { }
 
   ngOnInit() {
    this.id=this.route.snapshot.paramMap.get('id');
@@ -35,10 +36,10 @@ export class DoctorReportViewComponent implements OnInit {
   updateImageUpload(uploadedImageObj){
   
    this.authService.appUid.subscribe(data=>{
-     console.log(data.uid);
    uploadedImageObj.seenBy=data.uid;      
    uploadedImageObj.isCompletedReport=true;
   this.uploadImageServices.update(this.id,uploadedImageObj);
+  this.router.navigate(['/waiting-report']);
    })
 
 

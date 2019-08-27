@@ -24,6 +24,7 @@ export class UploadImageComponent implements OnInit {
     var year = dateObj.getUTCFullYear();
 
       uploadImage.searchDate = year + '' + month + '' + day;
+      uploadImage.dueAmount=30;
      this.authServic.appUid.subscribe(data=>{
        if(data) uploadImage.uid=data.uid;
      })

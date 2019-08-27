@@ -49,25 +49,25 @@
             <div class="col-sm-12">
 
                 <div>
-                    <table class="table-design" style="border: 1px solid black; width: 100%; height: 172px;">
+                    <table>
                         <tr>
-                            <th style="border-right: 1px solid black">Reference No :</th>
+                            <th >Reference No :</th>
                             <td>123908</td>
-                            <th style="border-right: 1px solid black">Date :</th>
+                            <th >Date :</th>
                             <td>{{uploadImage.entryDate|date}}</td>
 
                         </tr>
                         <tr>
-                            <th style="border-right: 1px solid black">Patient Name :</th>
+                            <th >Patient Name :</th>
                             <td>{{uploadImage.name}}</td>
-                            <th style="border-right: 1px solid black">Age :</th>
+                            <th >Age :</th>
                             <td>{{uploadImage.age}}</td>
-                            <th style="border-right: 1px solid black">Sex:</th>
+                            <th >Sex:</th>
                             <td>{{uploadImage.sexId}}</td>
 
                         </tr>
                         <tr colspan="3">
-                            <th style="border-right: 1px solid black">Ref by:</th>
+                            <th >Ref by:</th>
                             <td>{{uploadImage.refBy}}</td>
                         </tr>
 
@@ -75,8 +75,8 @@
 
                         </tr>
                         <tr colspan="3">
-                            <th style="border-right: 1px solid black">X-Ray of :</th>
-                            <td>X-ray of Abdominal Erectile Problem</td>
+                            <th >X-Ray of :</th>
+                            <td>{{uploadImage.commentTitle}}</td>
                         </tr>
 
                     </table>
@@ -88,7 +88,7 @@
 
         <div class="row">
             <div class="col-sm-12">
-                <h4 style="text-decoration: underline; text-align:center; margin-top:50px;">Name of the Xray</h4>
+                <h4 style="text-decoration: underline; text-align:center; margin-top:50px;">{{uploadImage.commentTitle }}</h4>
             </div>
             <div class="col-sm-12" *ngFor='let uI of uploadImage.commentStringArray'>
                 <!-- <h4 style="text-align: center; text-decoration: underline">Doctor Comments</h4> -->
@@ -102,7 +102,12 @@
 <div class="row">
     <div class="col-sm-12" style="text-align: center;margin-top:20px;">
         <!-- <input type="button" value="Download Pdf" (click)="captureScreen()" /> -->
-        <input type="button" value="Print Report" (click)="print()" />
+        <button
+          styleSheetFile="assets/css/style.css,assets/css/bootstrap.min.css"
+          [printStyle]="{h4 : {'color': 'red'},table : {'border': '1px solid black'},tr : {'border': '1px solid black'}}"
+         printSectionId="contentToConvert"
+         ngxPrint
+          >print</button> 
     </div>
 </div>
 <!-- end wrapper -->

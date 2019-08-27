@@ -13,9 +13,11 @@ export class UploadImage {
     entryDate:number;
     searchDate:string;
     uid:string;
+    dueAmount:number;
     
     isCompletedReport:boolean;
-
+    
+    commentTitle:string;
     comment:string;
     commentStringArray:any;
     seenBy:string;

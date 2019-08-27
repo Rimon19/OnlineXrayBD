@@ -24,6 +24,7 @@ import { CompletedReportsComponent } from './completed-reports/completed-reports
 import { PrintReportComponent } from './print-report/print-report.component';
 import { AdminReportPageComponent } from './admin-report-page/admin-report-page.component';
 import { DataTableModule } from 'angular5-data-table';
+import {NgxPrintModule} from 'ngx-print';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +49,8 @@ import { DataTableModule } from 'angular5-data-table';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    DataTableModule
+    DataTableModule,
+    NgxPrintModule
   
 
   ],
