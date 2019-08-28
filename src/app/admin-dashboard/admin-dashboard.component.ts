@@ -1,3 +1,5 @@
+import { UploadImage } from './../Model/upload-image';
+import { UploadImageService } from './../upload-image.service';
 import { AppUser } from './../Model/app-user';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserService } from '../user.service';
@@ -20,8 +22,12 @@ doctors=[];
 doctorTableResource:DataTableResource<any>;
 doctorItems=[];
 doctorItemCount:number;
-
-  constructor(private userServices:UserService) { }
+totalDoctor:number;
+totalUser:number;
+totalUpload:number;
+uploadImages:UploadImage[]
+  constructor(private userServices:UserService,
+    private uploadService:UploadImageService) { }
 
 //   ngOnInit() {
 //     this.userServices.getAllUsers().valueChanges().subscribe(data => {console.log(data)});
@@ -32,6 +38,7 @@ doctorItemCount:number;
 
   ngOnInit() {
     var x = this.userServices.getAllUsers();
+    var allUploadImage=this.uploadService.getAllImageUpload();
     this.subscription= x.snapshotChanges().subscribe(item => {
       this.appUser = [];
       this.doctors=[];
@@ -41,11 +48,12 @@ doctorItemCount:number;
       
        if(y['isUser']==true) {
         this.appUser.push(y as AppUser);
+        this.totalUser=this.appUser.length;
        }    
       
        if(y['isDoctor']==true){
         this.doctors.push(y as AppUser);
-
+        this.totalDoctor=this.doctors.length;
        }
       });  
 
@@ -53,6 +61,20 @@ doctorItemCount:number;
       this.initializeTableForDoctor(this.doctors);
     });
     
+  
+    this.subscription= allUploadImage.snapshotChanges().subscribe(item => {
+      this.uploadImages=[];
+      item.forEach(element => {
+        var y = element.payload.toJSON();
+        y["key"] = element.key;
+      
+       
+        this.uploadImages.push(y as UploadImage);
+        this.totalUpload=this.uploadImages.length;
+                   
+      }); 
+    });
+
   }
 
   ngOnDestroy() {
