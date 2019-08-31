@@ -36,7 +36,8 @@ export class DoctorReportViewComponent implements OnInit {
   updateImageUpload(uploadedImageObj){
   
    this.authService.appUid.subscribe(data=>{
-   uploadedImageObj.seenBy=data.uid;      
+   uploadedImageObj.seenBy=data.uid;  
+   uploadedImageObj.doctorSeenDate=new Date().getTime();    
    uploadedImageObj.isCompletedReport=true;
   this.uploadImageServices.update(this.id,uploadedImageObj);
   this.router.navigate(['/waiting-report']);

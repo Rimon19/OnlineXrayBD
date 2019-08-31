@@ -3,6 +3,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { UploadImage } from '../Model/upload-image';
 import { DataTableResource } from 'angular5-data-table';
+import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-doctor-dashboard',
   templateUrl: './doctor-dashboard.component.html',
@@ -14,11 +15,22 @@ export class DoctorDashboardComponent implements OnInit,OnDestroy {
   tableResource: DataTableResource<UploadImage>;
   items: UploadImage[] = [];
   itemCount: number; 
-  constructor(private uploadImageService:UploadImageService) { }
+
+  todaysWork:number;
+  totalWorkInthisMonth: number;
+  totalWorkPreviousMonth: number;
+  totalWork: number;
+  constructor(private uploadImageService:UploadImageService,
+    private authServic:AuthService) { }
 
   ngOnInit() {
-    var x = this.uploadImageService.getAllImageUpload();
-    this.subscription= x.snapshotChanges().pipe().subscribe(item => {
+
+  this.subscription= this.authServic.appUid.subscribe(data=>{
+      console.log(data.uid);
+      if(data){
+
+    var x = this.uploadImageService.getUploadImageByUserId(data.uid);
+    this.subscription= x.subscribe(item => {
       this.uploadImage = [];
       item.forEach(element => {
         var y = element.payload.toJSON();
@@ -26,11 +38,48 @@ export class DoctorDashboardComponent implements OnInit,OnDestroy {
         if(y['isCompletedReport']==true)                 
                 this.uploadImage.push(y as UploadImage);
                   
-      });      
+      });  
+
+      var dateObj = new Date();
+      var thisMonth = dateObj.getUTCMonth() + 1;
+      var previousMonth=dateObj.getUTCMonth();
+      var day = dateObj.getUTCDate();
+
+      let  countThisMonth=0;
+      let countPrevMonth=0;
+      let countTodayWork=0;
+      let countTotalWork=0;
+      for(let uImage of this.uploadImage){   
+
+        var entryDatObj=new Date(uImage.doctorSeenDate);
+         var month=entryDatObj.getUTCMonth() + 1;
+         var eDay=entryDatObj.getUTCDate();
+         
+         if(day=eDay){
+          countTodayWork++;
+         }
+        this.todaysWork=countTodayWork;
+        if(thisMonth==month){
+          countThisMonth++;
+      }
+      this.totalWorkInthisMonth=countThisMonth;
+      if(previousMonth==month){
+          countPrevMonth++;
+      }
+      this.totalWorkPreviousMonth=countPrevMonth;
+
+      if(uImage.isCompletedReport){
+        countTotalWork++;
+      }
+      this.totalWork=countTotalWork;
+
+        }
       this.initializeTable(this.uploadImage);                    
 
     }); 
   }
+});
+}
   
   ngOnDestroy() {
     this.subscription.unsubscribe();

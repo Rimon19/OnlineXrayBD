@@ -1,6 +1,7 @@
 export class UploadImage { 
     key:string;
     name: string;
+    code:string;
     age: number;   
     sexId:string;
     refBy:string;
@@ -14,7 +15,7 @@ export class UploadImage {
     searchDate:string;
     uid:string;
     dueAmount:number;
-    
+    doctorSeenDate:number;
     isCompletedReport:boolean;
     
     commentTitle:string;

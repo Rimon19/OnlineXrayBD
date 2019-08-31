@@ -18,6 +18,12 @@ export class UserDashboardComponent implements OnInit {
  tableResource: DataTableResource<UploadImage>;
  items: UploadImage[] = [];
  itemCount: number; 
+ totalUploadImageCount:number;
+ totalDueAmounts:number;
+ totalUploadthisMonth:number;
+ totalUploadPreviousMonth:number;
+ todayTotalUpload:number;
+
   constructor(private uploadeImageService:UploadImageService,
     private authServic:AuthService) { }
 
@@ -36,9 +42,51 @@ export class UserDashboardComponent implements OnInit {
             var y = element.payload.toJSON();
             y["key"] = element.key;                 
            this.uploadedImagesInfos.push(y as UploadImage);
-                      
-          });                      
-    
+                             
+          });        
+
+          this.totalUploadImageCount=this.uploadedImagesInfos.length; 
+          this.totalDueAmounts=0;
+
+          var dateObj = new Date();
+          var thisMonth = dateObj.getUTCMonth() + 1;
+          var previousMonth=dateObj.getUTCMonth();
+          var day = dateObj.getUTCDate();
+          
+
+          let  countThisMonth=0;
+          let countPrevMonth=0;
+          let countTodayWork=0;
+          for(let uImage of this.uploadedImagesInfos){   
+
+          var entryDatObj=new Date(uImage.entryDate);
+           var month=entryDatObj.getUTCMonth() + 1;
+           var eDay=entryDatObj.getUTCDate();
+           
+           if(day=eDay){
+            countTodayWork++;
+           }
+                 
+
+          this.todayTotalUpload=countTodayWork;
+           
+            if(thisMonth==month){
+                countThisMonth++;
+            }
+            this.totalUploadthisMonth=countThisMonth;
+            if(previousMonth==month){
+                countPrevMonth++;
+            }
+            this.totalUploadPreviousMonth=countPrevMonth;
+                   
+            if(uImage.dueAmount!=undefined){
+              this.totalDueAmounts =uImage.dueAmount+this.totalDueAmounts;             
+              
+            }
+            
+           
+          }
+                  
           this.initializeTable(this.uploadedImagesInfos);
         }); 
 

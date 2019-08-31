@@ -3,6 +3,7 @@ import { UploadImageService } from './../upload-image.service';
 import { Component, OnInit } from '@angular/core';
 import { UploadImage } from '../Model/upload-image';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-upload-image',
@@ -12,7 +13,11 @@ import { Router } from '@angular/router';
 export class UploadImageComponent implements OnInit {
   selectedFilesForImage:FileList;
   uploadImage=new UploadImage;
-  constructor(private uploadImageService:UploadImageService,private authServic:AuthService,
+  subscription: Subscription;
+  uploadImages:UploadImage[];
+  totalUpload:any;
+  constructor(private uploadImageService:UploadImageService,
+    private authServic:AuthService,
     private router:Router) { }
  
   saveImageUpload(uploadImage){
@@ -25,6 +30,7 @@ export class UploadImageComponent implements OnInit {
 
       uploadImage.searchDate = year + '' + month + '' + day;
       uploadImage.dueAmount=30;
+      uploadImage.code='00000'+(this.totalUpload+1);
      this.authServic.appUid.subscribe(data=>{
        if(data) uploadImage.uid=data.uid;
      })
@@ -49,7 +55,19 @@ export class UploadImageComponent implements OnInit {
 
   ngOnInit() {
 
-    //get edit id
+    var allUploadImage = this.uploadImageService.getAllImageUpload();
+    this.subscription= allUploadImage.snapshotChanges().subscribe(item => {
+      this.uploadImages=[];
+      item.forEach(element => {
+        var y = element.payload.toJSON();
+        y["key"] = element.key;
+      
+       
+        this.uploadImages.push(y as UploadImage);
+        this.totalUpload=this.uploadImages.length;
+                   
+      }); 
+    });
   }
 
   detectFilesForImageUrlFile(event) {
