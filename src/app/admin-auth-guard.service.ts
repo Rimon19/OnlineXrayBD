@@ -20,6 +20,6 @@ export class AdminAuthGuardService  {
    canActivate(): Observable<boolean> { 
     return this.auth.appUser$
     .pipe(map(todos => todos.isAdmin))
-
+      
     }
 }

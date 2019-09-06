@@ -51,55 +51,29 @@
             <h4 class="mt-0 header-title mb-4">Doctors</h4>
             <div class="table-responsive">
               <table class="table table-hover">
-                <tr>
-                  <th> Name</th>
-                  <th>Address</th>
-                  <th>User Name</th>
-                  <th> Mobile</th>
-                </tr>
-                <tr>
-                  <td>A</td>
-                  <td>B</td>
-                  <td>C</td>
-                  <td>D</td>
-                </tr>
-                <!-- <data-table
-                              [items]="doctorItems"
-                              [itemCount]="doctorItemCount"
-                              (reload)="reloadItemsForDoctors($event)">
+               
+                <data-table [items]="doctorItems" [itemCount]="doctorItemCount"
+                (reload)="reloadItemsForDoctors($event)">
 
-                              <data-table-column
-                              [property]="'fullName'"  
-                              [header]="'Name'"
-                              [sortable]="true"
-                              [resizable]="true"
-                            ></data-table-column>
+                <data-table-column [property]="'fullName'" [header]="'Name'" [sortable]="true"
+                    [resizable]="true"></data-table-column>
 
-                              <data-table-column
-                                [property]="'address'"  
-                                [header]="'Address'"
-                                [sortable]="true"
-                                [resizable]="true"
-                              ></data-table-column>
-                            
+                <data-table-column [property]="'address'" [header]="'Address'" [sortable]="true"
+                    [resizable]="true"></data-table-column>
+
+
+
+                <data-table-column [property]="'email'" [header]="'User Name'" [sortable]="true"
+                    [resizable]="true"></data-table-column>
+
+                <data-table-column [property]="'mobile'" [header]="'Mobile'" [sortable]="true"
+                    [resizable]="true"></data-table-column>
+
+
+            </data-table>            
                              
                               
-                              <data-table-column
-                                [property]="'email'"  
-                                [header]="'User Name'"
-                                [sortable]="true"
-                                [resizable]="true"
-                              ></data-table-column>
-                             
-                              <data-table-column
-                              [property]="'mobile'"  
-                              [header]="'Mobile'"
-                              [sortable]="true"
-                              [resizable]="true"
-                            ></data-table-column>
-                              
-                            
-                            </data-table> -->
+                        
               </table>
             </div>
 
