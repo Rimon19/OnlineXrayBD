@@ -70,16 +70,21 @@
 
             <div class="col-sm-6 col-xl-3">
                 <div class="card">
-                    <div class="card-heading p-4">
-                        <div class="mini-stat-icon float-right">
-                            <i class="mdi mdi-cube-outline bg-primary  text-white"></i>
-                        </div>
-                        <div>
-                            <h5 class="font-16">Total User</h5>
-                        </div>
-                        <h3 class="mt-4">{{totalUser}}</h3>
+                    <a style="text-decoration: none; color:black" routerLink="/app-totaluser-component">
+                        <div class="card-heading p-4">
 
-                    </div>
+                            <div class="mini-stat-icon float-right">
+                                <i class="mdi mdi-cube-outline bg-primary  text-white"></i>
+                            </div>
+                            <div>
+
+                                <h5 class="font-16">Total User</h5>
+
+                            </div>
+                            <h3 class="mt-4">{{totalUser}}</h3>
+
+                        </div>
+                    </a>
                 </div>
             </div>
 
@@ -100,31 +105,35 @@
 
             <div class="col-sm-6 col-xl-3">
                 <div class="card">
-                    <div class="card-heading p-4">
-                        <div class="mini-stat-icon float-right">
-                            <i class="mdi mdi-tag-text-outline bg-warning text-white"></i>
-                        </div>
-                        <div>
-                            <h5 class="font-16">Total Doctor</h5>
-                        </div>
-                        <h3 class="mt-4">{{totalDoctor}}</h3>
+                    <a style="text-decoration: none; color:black" routerLink="/app-totaldoctor-component">
+                        <div class="card-heading p-4">
+                            <div class="mini-stat-icon float-right">
+                                <i class="mdi mdi-tag-text-outline bg-warning text-white"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-16">Total Doctor</h5>
+                            </div>
+                            <h3 class="mt-4">{{totalDoctor}}</h3>
 
-                    </div>
+                        </div>
+                    </a>
                 </div>
             </div>
 
             <div class="col-sm-6 col-xl-3">
                 <div class="card">
-                    <div class="card-heading p-4">
-                        <div class="mini-stat-icon float-right">
-                            <i class="mdi mdi-buffer bg-danger text-white"></i>
-                        </div>
-                        <div>
-                            <h5 class="font-16">Total Uploads</h5>
-                        </div>
-                        <h3 class="mt-4">{{totalUpload}}</h3>
+                    <a style="text-decoration: none; color:black" routerLink="/app-totaluploads-component">
+                        <div class="card-heading p-4">
+                            <div class="mini-stat-icon float-right">
+                                <i class="mdi mdi-buffer bg-danger text-white"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-16">Total Uploads</h5>
+                            </div>
+                            <h3 class="mt-4">{{totalUpload}}</h3>
 
-                    </div>
+                        </div>
+                    </a>
                 </div>
             </div>
 
@@ -142,42 +151,23 @@
                     <div class="card-body">
                         <h4 class="mt-0 header-title mb-4">Users</h4>
                         <div class="table-responsive">
-                            <table class="table table-hover">                                                          
-                                <data-table
-                                [items]="items"
-                                [itemCount]="itemCount"
-                                (reload)="reloadItems($event)">
+                            <table class="table table-hover">
+                                <data-table [items]="items" [itemCount]="itemCount" (reload)="reloadItems($event)">
 
-                                <data-table-column
-                                  [property]="'inistituteName'"  
-                                  [header]="'Institute Name'"
-                                  [sortable]="true"
-                                  [resizable]="true"
-                                ></data-table-column>
-                              
-                                <data-table-column
-                                  [property]="'fullName'"  
-                                  [header]="'Owner Name'"
-                                  [sortable]="true"
-                                  [resizable]="true"
-                                ></data-table-column>
-                                
-                                <data-table-column
-                                  [property]="'email'"  
-                                  [header]="'User Name'"
-                                  [sortable]="true"
-                                  [resizable]="true"
-                                ></data-table-column>
-                               
-                                <data-table-column
-                                [property]="'mobile'"  
-                                [header]="'Mobile'"
-                                [sortable]="true"
-                                [resizable]="true"
-                              ></data-table-column>
-                                
-                              
-                              </data-table>
+                                    <data-table-column [property]="'inistituteName'" [header]="'Institute Name'"
+                                        [sortable]="true" [resizable]="true"></data-table-column>
+
+                                    <data-table-column [property]="'fullName'" [header]="'Owner Name'" [sortable]="true"
+                                        [resizable]="true"></data-table-column>
+
+                                    <data-table-column [property]="'email'" [header]="'User Name'" [sortable]="true"
+                                        [resizable]="true"></data-table-column>
+
+                                    <data-table-column [property]="'mobile'" [header]="'Mobile'" [sortable]="true"
+                                        [resizable]="true"></data-table-column>
+
+
+                                </data-table>
 
                             </table>
                         </div>
@@ -191,43 +181,25 @@
                         <h4 class="mt-0 header-title mb-4">Doctors</h4>
                         <div class="table-responsive">
                             <table class="table table-hover">
-                                 <data-table
-                                [items]="doctorItems"
-                                [itemCount]="doctorItemCount"
-                                (reload)="reloadItemsForDoctors($event)">
+                                <data-table [items]="doctorItems" [itemCount]="doctorItemCount"
+                                    (reload)="reloadItemsForDoctors($event)">
 
-                                <data-table-column
-                                [property]="'fullName'"  
-                                [header]="'Name'"
-                                [sortable]="true"
-                                [resizable]="true"
-                              ></data-table-column>
+                                    <data-table-column [property]="'fullName'" [header]="'Name'" [sortable]="true"
+                                        [resizable]="true"></data-table-column>
 
-                                <data-table-column
-                                  [property]="'address'"  
-                                  [header]="'Address'"
-                                  [sortable]="true"
-                                  [resizable]="true"
-                                ></data-table-column>
-                              
-                               
-                                
-                                <data-table-column
-                                  [property]="'email'"  
-                                  [header]="'User Name'"
-                                  [sortable]="true"
-                                  [resizable]="true"
-                                ></data-table-column>
-                               
-                                <data-table-column
-                                [property]="'mobile'"  
-                                [header]="'Mobile'"
-                                [sortable]="true"
-                                [resizable]="true"
-                              ></data-table-column>
-                                
-                              
-                              </data-table>
+                                    <data-table-column [property]="'address'" [header]="'Address'" [sortable]="true"
+                                        [resizable]="true"></data-table-column>
+
+
+
+                                    <data-table-column [property]="'email'" [header]="'User Name'" [sortable]="true"
+                                        [resizable]="true"></data-table-column>
+
+                                    <data-table-column [property]="'mobile'" [header]="'Mobile'" [sortable]="true"
+                                        [resizable]="true"></data-table-column>
+
+
+                                </data-table>
                             </table>
                         </div>
 

@@ -13,6 +13,9 @@ import { DoctorReportViewComponent } from './doctor-report-view/doctor-report-vi
 import { CompletedReportsComponent } from './completed-reports/completed-reports.component';
 import { PrintReportComponent } from './print-report/print-report.component';
 import { AdminReportPageComponent } from './admin-report-page/admin-report-page.component';
+import { TotaldoctorCOmponentComponent } from './totaldoctor-component/totaldoctor-component.component';
+import { TotaluserComponentComponent } from './totaluser-component/totaluser-component.component';
+import { TotaluploadsComponentComponent } from './totaluploads-component/totaluploads-component.component';
 
 const routes: Routes = [
   {
@@ -75,6 +78,19 @@ const routes: Routes = [
   {
     path: 'admin-report',
     component: AdminReportPageComponent
+  },
+  {
+    path: 'app-totaldoctor-component',
+    component: TotaldoctorCOmponentComponent
+  },
+  {
+    path: 'app-totaluser-component',
+    component: TotaluserComponentComponent
+  }
+  ,
+  {
+    path: 'app-totaluploads-component',
+    component: TotaluploadsComponentComponent
   }
 ];
 

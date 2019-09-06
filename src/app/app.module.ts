@@ -25,6 +25,9 @@ import { PrintReportComponent } from './print-report/print-report.component';
 import { AdminReportPageComponent } from './admin-report-page/admin-report-page.component';
 import { DataTableModule } from 'angular5-data-table';
 import {NgxPrintModule} from 'ngx-print';
+import { TotaluserComponentComponent } from './totaluser-component/totaluser-component.component';
+import { TotaldoctorCOmponentComponent } from './totaldoctor-component/totaldoctor-component.component';
+import { TotaluploadsComponentComponent } from './totaluploads-component/totaluploads-component.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +43,10 @@ import {NgxPrintModule} from 'ngx-print';
     DoctorReportViewComponent,
     CompletedReportsComponent,
     PrintReportComponent,
-    AdminReportPageComponent
+    AdminReportPageComponent,
+    TotaluserComponentComponent,
+    TotaldoctorCOmponentComponent,
+    TotaluploadsComponentComponent
   ],
   imports: [
     BrowserModule,
