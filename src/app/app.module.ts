@@ -28,6 +28,7 @@ import {NgxPrintModule} from 'ngx-print';
 import { TotaluserComponentComponent } from './totaluser-component/totaluser-component.component';
 import { TotaldoctorCOmponentComponent } from './totaldoctor-component/totaldoctor-component.component';
 import { TotaluploadsComponentComponent } from './totaluploads-component/totaluploads-component.component';
+import { TotalCompletedReportsComponent } from './total-completed-reports/total-completed-reports.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +47,8 @@ import { TotaluploadsComponentComponent } from './totaluploads-component/totalup
     AdminReportPageComponent,
     TotaluserComponentComponent,
     TotaldoctorCOmponentComponent,
-    TotaluploadsComponentComponent
+    TotaluploadsComponentComponent,
+    TotalCompletedReportsComponent
   ],
   imports: [
     BrowserModule,

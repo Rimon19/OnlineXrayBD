@@ -16,6 +16,7 @@ import { AdminReportPageComponent } from './admin-report-page/admin-report-page.
 import { TotaldoctorCOmponentComponent } from './totaldoctor-component/totaldoctor-component.component';
 import { TotaluserComponentComponent } from './totaluser-component/totaluser-component.component';
 import { TotaluploadsComponentComponent } from './totaluploads-component/totaluploads-component.component';
+import { TotalCompletedReportsComponent } from './total-completed-reports/total-completed-reports.component';
 
 const routes: Routes = [
   {
@@ -91,6 +92,10 @@ const routes: Routes = [
   {
     path: 'app-totaluploads-component',
     component: TotaluploadsComponentComponent
+  },
+  {
+    path: 'app-total-completed-reports',
+    component: TotalCompletedReportsComponent
   }
 ];
 
