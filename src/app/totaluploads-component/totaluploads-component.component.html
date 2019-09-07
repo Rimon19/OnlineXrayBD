@@ -57,11 +57,11 @@
                   <th>Last Month</th>
                   <th> Total</th>
                 </tr>
-                <tr>
-                  <td>A</td>
-                  <td>B</td>
-                  <td>C</td>
-                  <td>D</td>
+                <tr  *ngFor="let upload of calculateUploadImage">
+                  <td>{{upload.inistituteName}}</td> 
+                  <td>{{upload.thisMonth}}</td>
+                  <td>{{upload.lasMonth}}</td>
+                  <td>{{upload.total}}</td>                
                 </tr>
                 <!-- <data-table
                                 [items]="doctorItems"
