@@ -33,7 +33,7 @@ export class TotaluploadsComponentComponent implements OnInit {
                 this.appUser.push(y as AppUser);  
                 
               }     
-                
+                console.log('appUser',this.appUser);
                       
             });  
             
@@ -42,7 +42,7 @@ export class TotaluploadsComponentComponent implements OnInit {
 
                   var x = this.uploadeImageService.getUploadImageByUserId(element.key);
                       this.subscription= x.subscribe(item => {
-
+                               
                                   this.uploadedImagesInfos = [];
                                 
 

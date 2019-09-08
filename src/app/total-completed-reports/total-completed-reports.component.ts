@@ -41,7 +41,7 @@ export class TotalCompletedReportsComponent implements OnInit {
 
                 this.appUser.forEach(e => {
               
-                  var x = this.uploadeImageService.getUploadImageByUserId(e.key);
+                  var x = this.uploadeImageService.getUploadImageByUserIdSeenByDoctor(e.key);
                       this.subscription= x.subscribe(item => {
 
                                   this.uploadedImagesInfos = [];

@@ -25,7 +25,9 @@ doctorItemCount:number;
 totalDoctor:number;
 totalUser:number;
 totalUpload:number;
-uploadImages:UploadImage[]
+uploadImages:UploadImage[];
+totalCompleteUploadImage=[];
+totalCompleteReport:number;
   constructor(private userServices:UserService,
     private uploadService:UploadImageService) { }
 
@@ -42,20 +44,23 @@ uploadImages:UploadImage[]
     this.subscription= x.snapshotChanges().subscribe(item => {
       this.appUser = [];
       this.doctors=[];
+      
       item.forEach(element => {
         var y = element.payload.toJSON();
         y["key"] = element.key;
-      
+       
        if(y['isUser']==true) {
         this.appUser.push(y as AppUser);
         this.totalUser=this.appUser.length;
        }    
+       
       
        if(y['isDoctor']==true){
         this.doctors.push(y as AppUser);
         this.totalDoctor=this.doctors.length;
        }
       });  
+      
 
       this.initializeTable(this.appUser);    
       this.initializeTableForDoctor(this.doctors);
@@ -68,7 +73,10 @@ uploadImages:UploadImage[]
         var y = element.payload.toJSON();
         y["key"] = element.key;
       
-       
+        if(y['isCompletedReport']==true){
+          this.totalCompleteUploadImage.push(y as AppUser);
+          this.totalCompleteReport=this.totalCompleteUploadImage.length;
+        }
         this.uploadImages.push(y as UploadImage);
         this.totalUpload=this.uploadImages.length;
                    

@@ -35,6 +35,14 @@ export class UploadImageService {
  .pipe(catchError(err => of(null)));
       
 }
+getUploadImageByUserIdSeenByDoctor(userId: string) {
+  return this.db.list('/uploadImage/', ref => ref
+  .orderByChild('seenBy')
+  .equalTo(userId))
+  .snapshotChanges()
+  .pipe(catchError(err => of(null)));
+       
+ }
 
  getById(userId):Observable<UploadImage>{
   return this.db.list('/uploadImage/' + userId)

@@ -26,20 +26,23 @@ export class DoctorDashboardComponent implements OnInit,OnDestroy {
   ngOnInit() {
 
   this.subscription= this.authServic.appUid.subscribe(data=>{
-      console.log(data.uid);
+     
       if(data){
+       
+    var x = this.uploadImageService.getUploadImageByUserIdSeenByDoctor(data.uid);
 
-    var x = this.uploadImageService.getUploadImageByUserId(data.uid);
     this.subscription= x.subscribe(item => {
+      
       this.uploadImage = [];
       item.forEach(element => {
         var y = element.payload.toJSON();
         y["key"] = element.key;
         if(y['isCompletedReport']==true)                 
                 this.uploadImage.push(y as UploadImage);
-                  
+                
       });  
-
+     
+      this.initializeTable(this.uploadImage);  
       var dateObj = new Date();
       var thisMonth = dateObj.getUTCMonth() + 1;
       var previousMonth=dateObj.getUTCMonth();
@@ -74,7 +77,7 @@ export class DoctorDashboardComponent implements OnInit,OnDestroy {
       this.totalWork=countTotalWork;
 
         }
-      this.initializeTable(this.uploadImage);                    
+                      
 
     }); 
   }

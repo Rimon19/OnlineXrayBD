@@ -1,3 +1,4 @@
+import { AdminAuthGuardService } from './admin-auth-guard.service';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -17,6 +18,7 @@ import { TotaldoctorCOmponentComponent } from './totaldoctor-component/totaldoct
 import { TotaluserComponentComponent } from './totaluser-component/totaluser-component.component';
 import { TotaluploadsComponentComponent } from './totaluploads-component/totaluploads-component.component';
 import { TotalCompletedReportsComponent } from './total-completed-reports/total-completed-reports.component';
+import { DoctorAuthGuardService } from './doctor-auth-guard.service';
 
 const routes: Routes = [
   {
@@ -33,11 +35,13 @@ const routes: Routes = [
   },
   {
     path: 'doctor-dashboard',
-    component: DoctorDashboardComponent
+    component: DoctorDashboardComponent,
+    canActivate: [DoctorAuthGuardService]
   },
   {
     path: 'admin-dashboard',
-    component: AdminDashboardComponent
+    component: AdminDashboardComponent,
+    canActivate: [AdminAuthGuardService]
   },
   {
     path: 'create-user',
